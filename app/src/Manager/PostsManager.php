@@ -28,7 +28,7 @@ class PostsManager extends BaseManager
     public function getPostById(int $id): ?Posts
     {
         $query = $this->pdo->query("SELECT * FROM Posts WHERE id= :id");
-        $query->bindValue('id', $posts->getId());
+        $query->bindValue('id', $id);
         $query -> execute();
 
         $post = [];
@@ -69,13 +69,13 @@ class PostsManager extends BaseManager
     }
 
     // ajoute un post
-    public function InsertPost(Posts $posts): array
+    public function InsertPost(Posts $posts): void
     {
         $query = $this->pdo->query("INSERT INTO Posts (title, content, image, user_id) VALUES (:title, :content, :image, :user_id");
     
-        $query->bindValue('title', $posts->setTitle());
-        $query->bindValue('content', $posts->setContent());
-        $query->bindValue('image', $posts->setImage());
+        $query->bindValue('title', $posts->setTitle($posts->getTitle()));
+        $query->bindValue('content', $posts->setContent($posts->getContent()));
+        $query->bindValue('image', $posts->setImage($posts->getImage()));
         
         $query->bindValue('user_id', $posts->getUserId());
 
