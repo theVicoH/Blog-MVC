@@ -73,9 +73,9 @@ class PostsManager extends BaseManager
     {
         $query = $this->pdo->query("INSERT INTO Posts (title, content, image, user_id) VALUES (:title, :content, :image, :user_id");
     
-        $query->bindValue('title', $posts->setTitle($posts->getTitle()));
-        $query->bindValue('content', $posts->setContent($posts->getContent()));
-        $query->bindValue('image', $posts->setImage($posts->getImage()));
+        $query->bindValue('title', $posts->getTitle());
+        $query->bindValue('content', $posts->getContent());
+        $query->bindValue('image', $posts->getImage());
         
         $query->bindValue('user_id', $posts->getUserId());
 
