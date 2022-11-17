@@ -16,8 +16,7 @@ class Comments{
 
     public function setId(int $id): int
     {
-        $this->id = $id;
-        return $this;
+        return  $this->id = $id;
     }
 
     public function getContent(): string
@@ -27,8 +26,7 @@ class Comments{
 
     public function setContent(string $content): string
     {
-        $this->content = $content;
-        return $this;
+        return $this->content = $content;
     }
 
     public function getUserId(): int
@@ -38,8 +36,7 @@ class Comments{
 
     public function setUserId(int $userId): int
     {
-        $this->userId = $userId;
-        return $this;
+        return $this->userId = $userId;
     }
 
     public function getPostId(): int
@@ -49,8 +46,7 @@ class Comments{
 
     public function setPostId(int $postId): int
     {
-        $this->postId = $postId;
-        return $this;
+        return $this->postId = $postId;
     }
 
     public function getComId(): int
@@ -60,8 +56,8 @@ class Comments{
 
     public function setComId(int $comId): int
     {
-        $this->comId = $comId;
-        return $this;
+        
+        return $this->comId = $comId;
     }
 
     public function getDateTIme(): string
@@ -71,8 +67,7 @@ class Comments{
 
     public function setDateTime(string $dateTime): string
     {
-        $this->dateTime = $dateTime;
-        return $this;
+        return $this->dateTime = $dateTime;
     }
 }
 

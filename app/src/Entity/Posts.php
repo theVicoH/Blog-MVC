@@ -16,56 +16,54 @@ abstract class Posts
     }
     public function getTitle(): string
     {
-        return $this->title
+        return $this->title;
     }
     public function getContent(): string
     {
-        return $this->content
+        return $this->content;
     }
-    public function getUserId(): id
+    public function getUserId(): int
     {
-        return $this->user_id
+        return $this->user_id;
     }
     public function getImage() : string
     {
-        return $this->image
+        return $this->image;
     }
     public function getDateTime(): string
     {
-        return $this->datetime
+        return $this->datetime;
     }
 
 
-
-
-    public function setId(int $id):int
+    public function setId(int $id): int
     {
-        $this->id = $id;
+        return $this->id = $id;
     }
 
-    public function setId(string $title):string
+    public function setTitle(string $title): string
     {
-        $this->title = $title;
+        return $this->title = $title;
     }
 
-    public function setId(string $content):string
+    public function setContent(string $content):string
     {
-        $this->content = $content;
+        return $this->content = $content;
     }
 
-    public function setId(int $user_id):int
+    public function setUserId(int $user_id):int
     {
-        $this->user_id = $user_id;
+        return $this->user_id = $user_id;
     }
     
-    public function setId(string $image):string
+    public function setImage(string $image):string
     {
-        $this->image = $image;
+        return $this->image = $image;
     }
     
-    public function setId(string $datetime):string
+    public function setDateTime(string $datetime):string
     {
-        $this->datetime = $datetime;
+        return $this->datetime = $datetime;
     }
 
 }
