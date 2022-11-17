@@ -22,7 +22,7 @@ class Posts
     {
         return $this->content;
     }
-    public function getUserId(): id
+    public function getUserId(): int
     {
         return $this->user_id;
     }
@@ -36,36 +36,37 @@ class Posts
     }
 
 
-
-
-    public function setId(int $id):int
+    public function setId(int $id): int
     {
-        $this->id = $id;
+        return $this->id = $id;
     }
 
-    public function setTitle(string $title):string
+    public function setTitle(string $title): string
+
     {
-        $this->title = $title;
+        return $this->title = $title;
     }
 
     public function setContent(string $content):string
     {
-        $this->content = $content;
+        return $this->content = $content;
     }
 
     public function setUserId(int $user_id):int
     {
-        $this->user_id = $user_id;
+        return $this->user_id = $user_id;
     }
     
     public function setImage(string $image):string
     {
-        $this->image = $image;
+        return $this->image = $image;
     }
     
-    public function setDatetime(string $datetime):string
+
+    public function setDateTime(string $datetime):string
+
     {
-        $this->datetime = $datetime;
+        return $this->datetime = $datetime;
     }
 
 }
