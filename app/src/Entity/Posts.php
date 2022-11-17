@@ -1,13 +1,13 @@
 <?php 
 
-abstract class Posts 
+class Posts 
 {
-    protected int $id;
-    protected string $title;
-    protected string $content;
-    protected int $user_id;
-    protected string $image;
-    protected string $datetime;
+    private int $id;
+    private string $title;
+    private string $content;
+    private int $user_id;
+    private string $image;
+    private string $datetime;
 
 
     public function getId(): int
@@ -42,6 +42,7 @@ abstract class Posts
     }
 
     public function setTitle(string $title): string
+
     {
         return $this->title = $title;
     }
@@ -61,7 +62,9 @@ abstract class Posts
         return $this->image = $image;
     }
     
+
     public function setDateTime(string $datetime):string
+
     {
         return $this->datetime = $datetime;
     }

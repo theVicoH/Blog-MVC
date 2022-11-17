@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Entity;
+
+use App\Interfaces\PasswordProtectedInterface;
+use App\Interfaces\UserInterface;
+
 class Users 
 {
     private int $id;
@@ -55,5 +61,15 @@ class Users
     public function setRole(string $role): string
     {
         return $this->role = $role;
+    }
+
+    public function getHashedPassword(): string
+    {
+        // TODO: Implement getHashedPassword() method.
+    }
+
+    public function passwordMatch(): bool
+    {
+        // TODO: Implement passwordMatch() method.
     }
 }
