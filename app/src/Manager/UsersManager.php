@@ -21,15 +21,10 @@ class UsersManager extends BaseManager
         return $users;
     }
 
-    public function insertUser(Users $user)
-    {
-        $query = $this->pdo->prepare('insert into Users (email, password) values (:email, :password');
-        $query->bindValue('email', $users->getEmail());
-        $query->bindValue('password', $users->getPassword());
+    public function insertUsers(Users $user): bool{
+        $query = $this->pdo->prepare("INSERT INTO Users(username, password, email, role) VALUES ('Vicoh', '1234', 'victor@gmail.com', 'admin'");
         $query->execute();
-        // $id = $query->lastInsertedId();
-        $users->setId($id);
-
+        return true;
     }
 }
 

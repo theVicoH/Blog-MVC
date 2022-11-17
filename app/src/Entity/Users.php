@@ -18,9 +18,10 @@ class Users
         return $this->id;
     }
 
-    public function setId(int $id): int
+    public function setId(int $id): self
     {
-        return $this->id = $id;
+        $this->id = $id;
+        return $this;
     }
 
     public function getUsername(): string
@@ -63,12 +64,12 @@ class Users
         return $this->role = $role;
     }
 
-    public function getHashedPassword(): string
+    public function getHashedPassword(): void
     {
         // TODO: Implement getHashedPassword() method.
     }
 
-    public function passwordMatch(): bool
+    public function passwordMatch(): void
     {
         // TODO: Implement passwordMatch() method.
     }
