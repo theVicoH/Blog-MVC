@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Entity;
+
+use App\Interfaces\PasswordProtectedInterface;
+use App\Interfaces\UserInterface;
+
 class Users 
 {
     private int $id;
@@ -14,8 +20,7 @@ class Users
 
     public function setId(int $id): int
     {
-        $this->id = $id;
-        return $this;
+        return $this->id = $id;
     }
 
     public function getUsername(): string
@@ -25,8 +30,7 @@ class Users
 
     public function setUsername(string $username): string
     {
-        $this->username = $username;
-        return $this;
+        return $this->username = $username;
     }
 
     public function getPassword(): string
@@ -36,8 +40,7 @@ class Users
 
     public function setPassword(string $password): string
     {
-        $this->password = $password;
-        return $this;
+        return $this->password = $password;
     }
 
     public function getEmail(): string
@@ -47,8 +50,7 @@ class Users
 
     public function setEmail(string $email): string
     {
-        $this->email = $email;
-        return $this;
+        return $this->email = $email;
     }
 
     public function getRole(): string
@@ -58,7 +60,16 @@ class Users
 
     public function setRole(string $role): string
     {
-        $this->role = $role;
-        return $this;
+        return $this->role = $role;
+    }
+
+    public function getHashedPassword(): string
+    {
+        // TODO: Implement getHashedPassword() method.
+    }
+
+    public function passwordMatch(): bool
+    {
+        // TODO: Implement passwordMatch() method.
     }
 }
