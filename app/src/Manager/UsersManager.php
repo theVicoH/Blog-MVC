@@ -21,7 +21,7 @@ class UsersManager extends BaseManager
         return $users;
     }
 
-    public function getUserById(int $id): ?User
+    public function getUserById(int $id): ?Users
     {
         $query = $this->pdo->query("SELECT * FROM Users WHERE id = :id");
         $query->bindValue('id', $id);
@@ -35,8 +35,6 @@ class UsersManager extends BaseManager
 
         return new Users($data);
         
-
-       
     }
 
     public function deleteUser(int $id)
