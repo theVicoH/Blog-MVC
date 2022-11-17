@@ -26,6 +26,7 @@ class Posts
     {
         return $this->user_id;
     }
+    
     public function getImage() : string
     {
         return $this->image;
