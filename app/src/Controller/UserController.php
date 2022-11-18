@@ -72,14 +72,14 @@ class UserController extends AbstractController
             } else {
                 $pw = $user->getPassword();
             }
-
-            if ($pw != $password) {
+            
+            if (password_verify($password, $pw)) {
+                header('Location: /homepage');
+            } else {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
             }
 
 
-
-            header('Location: /homepage');
             exit;
         }
 
