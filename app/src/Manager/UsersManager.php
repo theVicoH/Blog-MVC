@@ -35,8 +35,6 @@ class UsersManager extends BaseManager
 
         return new Users($data);
         
-
-       
     }
 
     public function deleteUser(int $id)

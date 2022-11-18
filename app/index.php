@@ -5,4 +5,45 @@ use App\Entity\Users;
 require_once "vendor/autoload.php";
 
 $user = new Users();
-var_dump($user);
+// var_dump($user);
+
+switch ($_SERVER["REQUEST_URI"]) {
+
+    case "/bonjour":
+        $method = new \App\Controller\BjrController();
+        $method->bonjour();
+        break;
+
+    case "/":
+        break;
+
+    case "/login":
+        break;
+
+    case "/register":
+        break;
+
+    case "/homepage":
+        break;
+
+    case "/homepage-admin":
+        break;
+
+    case "/voir-post":
+        // voir une autre manière
+        // /voir-post?id=1
+        break;
+
+    case "/ajouter-post":
+        break;
+
+    case "/show-users":
+        break;
+
+    default:
+        echo 'ça existe po cette page chef ...';
+}
+
+// faire un controlleur.php
+// faire méthod pour aficher du contenue depuis les views
+// faire une view -->
