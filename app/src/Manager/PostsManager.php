@@ -43,7 +43,7 @@ class PostsManager extends BaseManager
 
 
     // récupére tous les posts d'un user
-    
+
     // public function getPostByUser(int $user_id): array
     // {
     //     $query = $this->pdo->query("SELECT * FROM Posts WHERE user_id = :user_id");
@@ -73,9 +73,9 @@ class PostsManager extends BaseManager
     {
         $query = $this->pdo->query("INSERT INTO Posts (title, content, image, user_id) VALUES (:title, :content, :image, :user_id");
     
-        $query->bindValue('title', $posts->setTitle());
-        $query->bindValue('content', $posts->setContent());
-        $query->bindValue('image', $posts->setImage());
+        $query->bindValue('title', $posts->getTitle());
+        $query->bindValue('content', $posts->getContent());
+        $query->bindValue('image', $posts->getImage());
         
         $query->bindValue('user_id', $posts->getUserId());
 
