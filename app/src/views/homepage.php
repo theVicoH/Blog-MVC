@@ -1,5 +1,6 @@
 
 
+
 <?php
     foreach ($posts as $post) { ?>
     <h2><?php echo $post->getTitle();?></h2>
@@ -8,4 +9,5 @@
     <p><?php echo $post->getDateTIme();?></p>
 <?php 
 }
+
 ?>

@@ -31,7 +31,7 @@ class UsersController extends AbstractController {
                 throw new \Exception('bad password');
             }
 
-            $newUser = (new Users())
+            $newUser = (new User())
                 ->setUsername($username)
                 ->setPassword(password_hash($password, PASSWORD_DEFAULT))
                 ->setEmail($email);
@@ -72,13 +72,16 @@ class UsersController extends AbstractController {
                 $pw = $user->getPassword();
             }
             
-            if ($pw != $password) {
+            // if ($pw != $password) {
+            //     throw new \Exception('WRONG USERNAME OR PASSWORD');
+            // }
+            if (password_verify($password, $pw)) {
+                header('Location: /homepage');
+            } else {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
             }
 
 
-
-            header('Location: /homepage');
             exit;
             
         }
