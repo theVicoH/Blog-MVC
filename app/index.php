@@ -24,9 +24,13 @@ switch ($_SERVER["REQUEST_URI"]) {
         break;
 
     case "/homepage":
+        $method = new \App\Controller\HomePageController();
+        $method->homepage();
         break;
 
     case "/homepage-admin":
+        $method = new \App\Controller\HomePageAdminController();
+        $method->homepageAdmin();
         break;
 
     case "/voir-post":
