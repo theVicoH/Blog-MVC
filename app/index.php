@@ -16,6 +16,7 @@ switch ($_SERVER["REQUEST_URI"]) {
 
     case "/":
         break;
+        // comment gérer l'index par exemple quand je met qql chose 
 
     case "/login":
         $method = new \App\Controller\LoginController();
@@ -45,9 +46,13 @@ switch ($_SERVER["REQUEST_URI"]) {
         break;
 
     case "/ajouter-post":
+        $method = new \App\Controller\PostsController();
+        $method->afficherPage();
         break;
 
     case "/show-users":
+        $method = new \App\Controller\UsersController();
+        $method->afficherPage();
         break;
 
     default:
