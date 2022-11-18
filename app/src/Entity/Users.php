@@ -63,13 +63,5 @@ class Users
         return $this->role = $role;
     }
 
-    public function getHashedPassword(): string
-    {
-        // TODO: Implement getHashedPassword() method.
-    }
-
-    public function passwordMatch(): bool
-    {
-        // TODO: Implement passwordMatch() method.
-    }
+    
 }
