@@ -1,3 +1,3 @@
 <?php
 
-echo "page register ici"
+echo "page register ici";
