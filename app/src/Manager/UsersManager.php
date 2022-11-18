@@ -23,7 +23,7 @@ class UsersManager extends BaseManager
 
     public function getUserById(int $id): ?Users
     {
-        $query = $this->pdo->query("SELECT * FROM Users WHERE id = :id");
+        $query = $this->pdo->prepare("SELECT * FROM Users WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
 
@@ -35,22 +35,37 @@ class UsersManager extends BaseManager
 
         return new Users($data);
         
+    }   
+
+    public function getUserByUsername(string $username): ?Users
+    {
+        $query = $this->pdo->prepare("SELECT * FROM Users WHERE username = :username");
+        $query->bindValue('username', $username);
+        $query->execute();
+
+        $data = $query->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$data) return null;
+
+        return new Users($data);
+        
     }
+
 
     public function deleteUser(int $id)
     {
-        $query = $this->pdo->query("DELETE * FROM Users WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE * FROM Users WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
     }
 
-    public function insertUser(Users $user)
+    public function insertUser(Users $user): bool
     {
-        $query = $this->pdo->query("INSERT INTO Users (username, password, email, role) VALUES (:username, :password, :email, :role)");
+        $query = $this->pdo->prepare("INSERT INTO Users (username, password, email, role) VALUES (:username, :password, :email, :role)");
         $query->bindValue('username', $user->getUsername());
         $query->bindValue('password', $user->getPassword());
         $query->bindValue('email', $user->getEmail());
         $query->bindValue('role', $user->getRole());
-        $query->execute();
+        return (bool)$query->execute();
     }
 }
