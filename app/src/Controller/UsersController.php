@@ -68,20 +68,6 @@ class UsersController extends AbstractController {
     
             $manager = new UsersManager(new PDOFactory());
             $user = $manager->getUserByUsername($username);
-            // $pw = $user->getPassword(); 
-            // $pw = $user->getPassword($user);
-            // $pw = $user->getPassword($manager);
-            // erreur dans user l.40
-            
-            
-            // $pw = $manager->getPassword(); 
-            // $pw = $manager->getPassword($manager);
-            // $pw = $manager->getPassword($user);
-
-            // $pw = getPassword($user);
-            // $pw = getPassword($manager);
-
-
             
             if(!$user) {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
