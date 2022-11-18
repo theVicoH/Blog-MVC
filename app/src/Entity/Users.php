@@ -11,7 +11,7 @@ class Users
     private string $username;
     private string $password;
     private string $email;
-    private string $role;
+    private string $role = 'user';
 
     public function getId(): int
     {
@@ -28,9 +28,10 @@ class Users
         return $this->username;
     }
 
-    public function setUsername(string $username): string
+    public function setUsername(string $username): self
     {
-        return $this->username = $username;
+        $this->username = $username;
+        return $this;
     }
 
     public function getPassword(): string
@@ -38,9 +39,10 @@ class Users
         return $this->password;
     }
 
-    public function setPassword(string $password): string
+    public function setPassword(string $password): self
     {
-        return $this->password = $password;
+        $this->password = $password;
+        return $this;
     }
 
     public function getEmail(): string
@@ -48,9 +50,10 @@ class Users
         return $this->email;
     }
 
-    public function setEmail(string $email): string
+    public function setEmail(string $email): self
     {
-        return $this->email = $email;
+        $this->email = $email;
+        return $this;
     }
 
     public function getRole(): string
