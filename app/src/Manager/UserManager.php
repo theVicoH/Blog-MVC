@@ -6,15 +6,15 @@ use App\Entity\User;
 use App\Factory\PDOFactory;
 use App\Interfaces\Database;
 
-class UsersManager extends BaseManager
+class UserManager extends BaseManager
 {
-    public function getAllUser(): array 
+    public function getAllUser(): array
     {
         $query = $this->pdo->query("SELECT * FROM User");
 
         $user = [];
 
-        while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
             $user[] = new User($data);
         }
 
@@ -34,8 +34,7 @@ class UsersManager extends BaseManager
         if (!$data) return null;
 
         return new User($data);
-        
-    }   
+    }
 
     public function getUserByUsername(string $username): ?User
     {
@@ -48,7 +47,6 @@ class UsersManager extends BaseManager
         if (!$data) return null;
 
         return new User($data);
-        
     }
 
 

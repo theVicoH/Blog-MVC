@@ -1,3 +1,3 @@
 <?php
 
-echo 'coucou je suis la page afficher users !';
+echo 'coucou je suis la page afficher User !';

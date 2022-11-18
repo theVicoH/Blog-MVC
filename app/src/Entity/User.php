@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Interfaces\PasswordProtectedInterface;
 use App\Interfaces\UserInterface;
 
-class Users extends BaseEntity
+class User extends BaseEntity
 {
     private int $id;
     private string $username;
@@ -67,6 +67,4 @@ class Users extends BaseEntity
         $this->role = $role;
         return $this;
     }
-
-    
 }

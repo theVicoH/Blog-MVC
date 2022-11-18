@@ -1,37 +1,39 @@
 <?php
+
 namespace App\Controller;
 
-use App\Manager\UsersManager;
+use App\Manager\UserManager;
 use App\Factory\PDOFactory;
 use App\Entity\User;
 
-class UsersController extends AbstractController {
-    public function afficherUsers()
+class UserController extends AbstractController
+{
+    public function afficherUser()
     {
-        include dirname(__DIR__, 1) . '/views/afficher-users.php';
+        include dirname(__DIR__, 1) . '/views/afficher-User.php';
     }
 
 
     public function register()
     {
-        if(isset($_POST['username']) && isset($_POST['password'])) {
+        if (isset($_POST['username']) && isset($_POST['password'])) {
 
             $username = $_POST['username'];
             $password = $_POST['password'];
             $email = $_POST['email'];
-    
-            $manager = new UsersManager(new PDOFactory());
-            $user = $manager->getUserByUsername($username);
-    
-            if($user) {
-                throw new \Exception('trop ici');
-            } 
 
-            if($_POST['password'] !== $_POST['confirmPassword']) {
+            $manager = new UserManager(new PDOFactory());
+            $user = $manager->getUserByUsername($username);
+
+            if ($user) {
+                throw new \Exception('trop ici');
+            }
+
+            if ($_POST['password'] !== $_POST['confirmPassword']) {
                 throw new \Exception('bad password');
             }
 
-            $newUser = (new Users())
+            $newUser = (new User())
                 ->setUsername($username)
                 ->setPassword(password_hash($password, PASSWORD_DEFAULT))
                 ->setEmail($email);
@@ -44,7 +46,6 @@ class UsersController extends AbstractController {
 
             header('Location: /login');
             exit;
-            
         }
 
         include dirname(__DIR__, 1) . '/views/register.php';
@@ -57,21 +58,21 @@ class UsersController extends AbstractController {
 
     public function login()
     {
-        if(isset($_POST['username']) && isset($_POST['password'])) {
+        if (isset($_POST['username']) && isset($_POST['password'])) {
 
             $username = $_POST['username'];
             $password = $_POST['password'];
-    
-            $manager = new UsersManager(new PDOFactory());
+
+            $manager = new UserManager(new PDOFactory());
             $user = $manager->getUserByUsername($username);
-            
-            if(!$user) {
+
+            if (!$user) {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
                 // throw new \Exception('CET USER EXISTE PAS');
             } else {
                 $pw = $user->getPassword();
             }
-            
+
             if ($pw != $password) {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
             }
@@ -80,7 +81,6 @@ class UsersController extends AbstractController {
 
             header('Location: /homepage');
             exit;
-            
         }
 
 
