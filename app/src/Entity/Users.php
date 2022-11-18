@@ -18,9 +18,10 @@ class Users
         return $this->id;
     }
 
-    public function setId(int $id): int
+    public function setId(int $id): self
     {
-        return $this->id = $id;
+        $this->id = $id;
+        return $this;
     }
 
     public function getUsername(): string
@@ -61,9 +62,10 @@ class Users
         return $this->role;
     }
 
-    public function setRole(string $role): string
+    public function setRole(string $role): self
     {
-        return $this->role = $role;
+        $this->role = $role;
+        return $this;
     }
 
     
