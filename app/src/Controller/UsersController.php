@@ -12,10 +12,6 @@ class UsersController extends AbstractController {
     }
 
 
-
-
-
-
     public function register()
     {
         if(isset($_POST['username']) && isset($_POST['password'])) {

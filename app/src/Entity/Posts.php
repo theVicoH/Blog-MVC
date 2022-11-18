@@ -4,7 +4,7 @@ namespace App\Entity;
 
 
 
-class Posts 
+class Posts extends BaseEntity
 {
     private int $id;
     private string $title;
