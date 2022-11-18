@@ -43,7 +43,7 @@ class PostsManager extends BaseManager
 
 
     // récupére tous les posts d'un user
-    
+
     // public function getPostByUser(int $user_id): array
     // {
     //     $query = $this->pdo->query("SELECT * FROM Posts WHERE user_id = :user_id");
