@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +10,14 @@
 <body>
 
 
-    <form action="#" method="POST">
+    <form action="login" method="POST">
 
         <div class="form">
-            <input type="text" class="input"  id="username" name="username" placeholder="username" require>
+            <input type="text" class="input"  id="username" name="username" placeholder="username" required>
         </div>
 
         <div class="form">
-            <input type="password" class="input"  id="password" name="password" placeholder="password" require>
+            <input type="password" class="input"  id="password" name="password" placeholder="password" required>
         </div>
 
         <button type="submit" class="btn">Se connecter</button>
