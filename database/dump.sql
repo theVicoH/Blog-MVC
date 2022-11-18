@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Comment
     content TEXT NOT NULL,
     user_id int NOT NULL,
     post_id int NOT NULL,
-    com_id int NOT NULL,
+    com_id int DEFAULT NULL,
     datetime DATETIME NOT NULL
 );
 
