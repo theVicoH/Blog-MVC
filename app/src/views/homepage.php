@@ -1,14 +1,13 @@
+
+
+
 <?php
-
-echo 'On est sur la homepage';
-
-$date = new DateTime();
-
-// echo $date->format('d/m/Y à H:i:s');
-
-// $date->format('d/m/Y à H:i:s');
-// echo $date;
-
-
+    foreach ($posts as $post) { ?>
+    <h2><?php echo $post->getTitle();?></h2>
+    <img src="<?php echo $post->getImage();?>" alt="Image de Chat">
+    <p><?php echo $post->getContent();?></p>
+    <p><?php echo $post->getDateTIme();?></p>
+<?php 
+}
 
 ?>

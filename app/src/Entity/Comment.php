@@ -2,8 +2,7 @@
 
 
 namespace App\Entity;
-class Comments extends BaseEntity
-{
+class Comments extends BaseEntity{
 
     private int $id;
     private string $content;

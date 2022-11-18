@@ -12,7 +12,8 @@ class PostsManager extends BaseManager
     // récupére tous les posts
     public function getAllPosts(): array 
     {
-        $query = $this->pdo->query("SELECT * FROM Posts");
+        $query = $this->pdo->query("SELECT * FROM Post");
+        $query->execute();
 
         $posts = [];
 

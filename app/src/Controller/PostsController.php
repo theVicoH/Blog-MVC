@@ -1,6 +1,10 @@
 <?php
 namespace App\Controller;
 
+use App\Manager\PostsManager;
+use App\Factory\PDOFactory;
+use App\Entity\Posts;
+
 class PostsController extends AbstractController {
     
     public function ajouterPost()
@@ -10,7 +14,10 @@ class PostsController extends AbstractController {
 
     public function homepage()
     {
-        include dirname(__DIR__, 1) . '/views/homepage.php';
+        $manager = new PostsManager(new PDOFactory());
+        $posts = $manager->getAllPosts();
+        $this->render("homepage.php", ["posts" => $posts], "Tous les posts");
+        // include dirname(__DIR__, 1) . '/views/homepage.php';
     }
 
     public function homepageAdmin()
