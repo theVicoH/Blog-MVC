@@ -18,10 +18,16 @@ switch ($_SERVER["REQUEST_URI"]) {
         break;
 
     case "/login":
+        $method = new \App\Controller\LoginController();
+        $method->login();
         break;
 
+
     case "/register":
+        $method = new \App\Controller\RegisterController();
+        $method->register();
         break;
+
 
     case "/homepage":
         break;
