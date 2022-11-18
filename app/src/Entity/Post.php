@@ -41,36 +41,45 @@ class Posts extends BaseEntity
         return $this->datetime;
     }
 
-    public function setId(int $id): int
+
+
+
+    public function setId(int $id): self
     {
-        return $this->id = $id;
+        $this->id = $id;
+        return $this;
     }
 
-    public function setTitle(string $title): string
+    public function setTitle(string $title): self
 
     {
-        return $this->title = $title;
+        $this->title = $title;
+        return $this;
     }
 
-    public function setContent(string $content):string
+    public function setContent(string $content):self
     {
-        return $this->content = $content;
+        $this->content = $content;
+        return $this;
     }
 
-    public function setUserId(int $user_id):int
+    public function setUserId(int $user_id):self
     {
-        return $this->user_id = $user_id;
+        $this->user_id = $user_id;
+        return $this;
     }
     
-    public function setImage(string $image):string
+    public function setImage(string $image):self
     {
-        return $this->image = $image;
+        $this->image = $image;
+        return $this;
     }
     
-    public function setDateTime(string $datetime):string
+    public function setDateTime(string $datetime):self
 
     {
-        return $this->datetime = $datetime;
+        $this->datetime = $datetime;
+        return $this;
     }
 
 }

@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Manager\UsersManager;
 use App\Factory\PDOFactory;
-use App\Entity\Users;
+use App\Entity\User;
 
 class UsersController extends AbstractController {
     public function afficherUsers()
@@ -57,6 +57,33 @@ class UsersController extends AbstractController {
 
     public function login()
     {
+        if(isset($_POST['username']) && isset($_POST['password'])) {
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+    
+            $manager = new UsersManager(new PDOFactory());
+            $user = $manager->getUserByUsername($username);
+            
+            if(!$user) {
+                throw new \Exception('WRONG USERNAME OR PASSWORD');
+                // throw new \Exception('CET USER EXISTE PAS');
+            } else {
+                $pw = $user->getPassword();
+            }
+            
+            if ($pw != $password) {
+                throw new \Exception('WRONG USERNAME OR PASSWORD');
+            }
+
+
+
+            header('Location: /homepage');
+            exit;
+            
+        }
+
+
         include dirname(__DIR__, 1) . '/views/login.php';
     }
 }

@@ -16,9 +16,10 @@ class Comments extends BaseEntity{
         return $this->id;
     }
 
-    public function setId(int $id): int
+    public function setId(int $id): self
     {
-        return  $this->id = $id;
+        $this->id = $id;
+        return $this;
     }
 
     public function getContent(): string
@@ -26,9 +27,10 @@ class Comments extends BaseEntity{
         return $this->content;
     }
 
-    public function setContent(string $content): string
+    public function setContent(string $content): self
     {
-        return $this->content = $content;
+        $this->content = $content;
+        return $this;
     }
 
     public function getUserId(): int
@@ -36,9 +38,10 @@ class Comments extends BaseEntity{
         return $this->userId;
     }
 
-    public function setUserId(int $userId): int
+    public function setUserId(int $userId): self
     {
-        return $this->userId = $userId;
+        $this->userId = $userId;
+        return $this;
     }
 
     public function getPostId(): int
@@ -46,9 +49,10 @@ class Comments extends BaseEntity{
         return $this->postId;
     }
 
-    public function setPostId(int $postId): int
+    public function setPostId(int $postId): self
     {
-        return $this->postId = $postId;
+        $this->postId = $postId;
+        return $this;
     }
 
     public function getComId(): int
@@ -56,10 +60,10 @@ class Comments extends BaseEntity{
         return $this->comId;
     }
 
-    public function setComId(int $comId): int
-    {
-        
-        return $this->comId = $comId;
+    public function setComId(int $comId): self
+    {        
+        $this->comId = $comId;
+        return $this;
     }
 
     public function getDateTIme(): string
@@ -67,9 +71,10 @@ class Comments extends BaseEntity{
         return $this->dateTime;
     }
 
-    public function setDateTime(string $dateTime): string
+    public function setDateTime(string $dateTime): self
     {
-        return $this->dateTime = $dateTime;
+        $this->dateTime = $dateTime;
+        return $this;
     }
 }
 
