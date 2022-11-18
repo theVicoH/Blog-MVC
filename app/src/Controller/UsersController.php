@@ -90,11 +90,8 @@ class UsersController extends AbstractController {
                 $pw = $user->getPassword();
             }
             
-            if ($pw == $password) {
-                echo "coucou";
-            } else {
+            if ($pw != $password) {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
-                // throw new \Exception('MAUVAIS MDP');
             }
 
 
