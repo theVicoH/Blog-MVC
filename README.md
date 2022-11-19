@@ -1,20 +1,26 @@
 # Blog-MVC
 
-## Users
+## User
+
 [] - Login
 [] - Register
-### Users Lambda
+
+### User Lambda
+
 [] - Peuvent écrire post
 [] - Peuvent écrire commentaire
 [] - Peuvent supprimer leur post
 [] - Peuvent supprimer leur commentaire
-### Users Admin
+
+### User Admin
+
 [] - Peuvent écrire post
 [] - Peuvent écrire commentaire
 [] - Peuvent supprimer nptquelle post
 [] - Peuvent supprimer nptquelle commentaire
 
-## Posts
+## Post
+
 [] - Titre
 [] - Contenu
 [] - Auteur
@@ -22,6 +28,7 @@
 [] - Image d'illustration du post
 
 ## Commentaires
+
 [] - Auteur
 [] - Date de publication
 [] - Réponse à un commentaire

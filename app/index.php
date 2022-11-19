@@ -1,6 +1,6 @@
 <?php
 
-use App\Entity\Users;
+use App\Entity\User;
 
 require_once "vendor/autoload.php";
 
@@ -11,24 +11,24 @@ switch ($_SERVER["REQUEST_URI"]) {
         // comment gérer l'index -> quand je mets qql chose ce qql chose s'affiche sur les autres pages aussi
 
     case "/login":
-        $method = new \App\Controller\UsersController();
+        $method = new \App\Controller\UserController();
         $method->login();
         break;
 
 
     case "/register":
-        $method = new \App\Controller\UsersController();
+        $method = new \App\Controller\UserController();
         $method->register();
         break;
 
 
     case "/homepage":
-        $method = new \App\Controller\PostsController();
+        $method = new \App\Controller\PostController();
         $method->homepage();
         break;
 
     case "/homepage-admin":
-        $method = new \App\Controller\PostsController();
+        $method = new \App\Controller\PostController();
         $method->homepageAdmin();
         break;
 
@@ -38,13 +38,13 @@ switch ($_SERVER["REQUEST_URI"]) {
         break;
 
     case "/ajouter-post":
-        $method = new \App\Controller\PostsController();
+        $method = new \App\Controller\PostController();
         $method->ajouterPost();
         break;
 
-    case "/show-users":
-        $method = new \App\Controller\UsersController();
-        $method->afficherUsers();
+    case "/show-User":
+        $method = new \App\Controller\UserController();
+        $method->afficherUser();
         break;
 
     default:

@@ -1,12 +1,14 @@
 <?php
+
 namespace App\Controller;
 
-use App\Manager\PostsManager;
+use App\Manager\PostManager;
 use App\Factory\PDOFactory;
-use App\Entity\Posts;
+use App\Entity\Post;
 
-class PostsController extends AbstractController {
-    
+class PostController extends AbstractController
+{
+
     public function ajouterPost()
     {
         include dirname(__DIR__, 1) . '/views/ajt-post.php';
@@ -14,9 +16,9 @@ class PostsController extends AbstractController {
 
     public function homepage()
     {
-        $manager = new PostsManager(new PDOFactory());
-        $posts = $manager->getAllPosts();
-        $this->render("homepage.php", ["posts" => $posts], "Tous les posts");
+        $manager = new PostManager(new PDOFactory());
+        $Post = $manager->getAllPost();
+        $this->render("homepage.php", ["Post" => $Post], "Tous les Post");
         // include dirname(__DIR__, 1) . '/views/homepage.php';
     }
 
