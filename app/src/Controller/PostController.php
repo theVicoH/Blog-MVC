@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Datetime;
@@ -8,9 +7,8 @@ use App\Manager\PostManager;
 use App\Factory\PDOFactory;
 use App\Entity\Post;
 
-class PostController extends AbstractController
-{
-
+class PostController extends AbstractController {
+    
     public function ajouterPost()
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -33,10 +31,6 @@ class PostController extends AbstractController
 
         $manager = new PostManager(new PDOFactory());
         $manager->insertPost($newPost);
-
-
-        header('Location: /homepage');
-            exit;
     }
 
     public function homepage()
@@ -44,7 +38,6 @@ class PostController extends AbstractController
         $manager = new PostManager(new PDOFactory());
         $Post = $manager->getAllPost();
         $this->render("homepage.php", ["Post" => $Post], "Tous les Post");
-        // include dirname(__DIR__, 1) . '/views/homepage.php';
     }
 
     public function homepageAdmin()

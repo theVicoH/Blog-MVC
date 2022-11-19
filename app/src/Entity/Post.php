@@ -40,11 +40,6 @@ class Post extends BaseEntity
         return $this->datetime;
     }
 
-    public function getDatetimeMYSQL(): ?string
-    {
-        return $this->datetime?->format('Y-m-d h:i:s');
-    }
-
     public function setId(int $id): self
     {
         $this->id = $id;
@@ -77,7 +72,6 @@ class Post extends BaseEntity
     }
     
     public function setDatetime($datetime):self
-
     {
         $this->datetime = $datetime;
         return $this;

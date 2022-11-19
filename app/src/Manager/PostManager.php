@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-use Datetime;
 use App\Entity\Post;
 use App\Factory\PDOFactory;
 use App\Interfaces\Database;
@@ -11,14 +10,14 @@ class PostManager extends BaseManager
 {
 
     // récupére tous les posts
-    public function getAllPosts(): array 
+    public function getAllPost(): array 
     {
         $query = $this->pdo->query("SELECT * FROM Post");
 
         $posts = [];
 
         while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $posts[] = new Posts($data);
+            $posts[] = new Post($data);
         }
 
         return $posts;
@@ -26,7 +25,7 @@ class PostManager extends BaseManager
 
 
     // récupére un post par son id
-    public function getPostById(int $id): ?Posts
+    public function getPostById(int $id): ?Post
     {
         $query = $this->pdo->prepare("SELECT * FROM Post WHERE id= :id");
         $query->bindValue('id', $id);
@@ -38,7 +37,7 @@ class PostManager extends BaseManager
 
         if (!$data) return null;
 
-        return new Posts($data);
+        return new Post($data);
         
     }
 
