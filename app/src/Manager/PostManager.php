@@ -10,28 +10,27 @@ use App\Interfaces\Database;
 class PostManager extends BaseManager
 {
 
-    // récupére tous les Post
-    public function getAllPost(): array
+    // récupére tous les posts
+    public function getAllPosts(): array 
     {
         $query = $this->pdo->query("SELECT * FROM Post");
-        $query->execute();
 
-        $Post = [];
+        $posts = [];
 
-        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $Post[] = new Post($data);
+        while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $posts[] = new Posts($data);
         }
 
-        return $Post;
+        return $posts;
     }
 
 
     // récupére un post par son id
-    public function getPostById(int $id): ?Post
+    public function getPostById(int $id): ?Posts
     {
-        $query = $this->pdo->query("SELECT * FROM Post WHERE id= :id");
+        $query = $this->pdo->prepare("SELECT * FROM Post WHERE id= :id");
         $query->bindValue('id', $id);
-        $query->execute();
+        $query -> execute();
 
         $post = [];
 
@@ -39,15 +38,35 @@ class PostManager extends BaseManager
 
         if (!$data) return null;
 
-        return new Post($data);
+        return new Posts($data);
+        
     }
+
+
+    // récupére tous les posts d'un user
+
+    // public function getPostByUser(int $user_id): array
+    // {
+    //     $query = $this->pdo->query("SELECT * FROM Posts WHERE user_id = :user_id");
+    //     $query->bindValue('user_id', $posts->getUserId());
+    //     $query -> execute();
+
+    //     $posts = [];
+
+    //     while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+    //         $posts[] = new Posts($data);
+    //     }
+
+    //     return $posts;
+    // }
+
 
     // supprime le post avec son id
     public function deletePost(int $id)
     {
-        $query = $this->pdo->query("DELETE * FROM Post WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE * FROM Post WHERE id = :id");
         $query->bindValue('id', $id);
-        $query->execute();
+        $query -> execute();
     }
 
     // ajoute un post
@@ -61,4 +80,9 @@ class PostManager extends BaseManager
         $query->bindValue('user_id', $post->getUserId() ?? 1, \PDO::PARAM_INT);
         $query->execute();
     }
+
+
+
+
+
 }
