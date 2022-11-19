@@ -2,7 +2,7 @@
 
 
 namespace App\Entity;
-class Comments{
+class Comment extends BaseEntity{
 
     private int $id;
     private string $content;
@@ -77,5 +77,3 @@ class Comments{
         return $this;
     }
 }
-
-?>

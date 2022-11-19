@@ -3,7 +3,7 @@
 namespace App\Entity;
 use Datetime;
 
-class Posts 
+class Post extends BaseEntity
 {
     private ?int $id = null;
     private ?string $title = null;
@@ -86,4 +86,3 @@ class Posts
 
 
 }
-?>

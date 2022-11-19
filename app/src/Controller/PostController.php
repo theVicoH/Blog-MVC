@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Controller;
 
 use Datetime;
 
-use App\Manager\PostsManager;
+use App\Manager\PostManager;
 use App\Factory\PDOFactory;
-use App\Entity\Posts;
+use App\Entity\Post;
 
-class PostsController extends AbstractController {
-    
+class PostController extends AbstractController
+{
+
     public function ajouterPost()
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -23,13 +25,13 @@ class PostsController extends AbstractController {
         move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__, 2) . '/uploads/' . $_FILES['file']['name']);
         $datetime = new \DateTime();
 
-        $newPost = (new Posts())
+        $newPost = (new Post())
                 ->setTitle($title)
                 ->setContent($content)
                 ->setImage( '/uploads/' . $_FILES['file']['name'])
                 ->setDatetime($datetime);
 
-        $manager = new PostsManager(new PDOFactory());
+        $manager = new PostManager(new PDOFactory());
         $manager->insertPost($newPost);
 
 
@@ -39,7 +41,10 @@ class PostsController extends AbstractController {
 
     public function homepage()
     {
-        include dirname(__DIR__, 1) . '/views/homepage.php';
+        $manager = new PostManager(new PDOFactory());
+        $Post = $manager->getAllPost();
+        $this->render("homepage.php", ["Post" => $Post], "Tous les Post");
+        // include dirname(__DIR__, 1) . '/views/homepage.php';
     }
 
     public function homepageAdmin()

@@ -22,6 +22,7 @@
 [x] - Image d'illustration du post
 
 ## Commentaires
+
 [] - Auteur
 [] - Date de publication
 [] - Réponse à un commentaire

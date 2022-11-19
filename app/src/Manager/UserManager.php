@@ -2,42 +2,41 @@
 
 namespace App\Manager;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Factory\PDOFactory;
 use App\Interfaces\Database;
 
-class UsersManager extends BaseManager
+class UserManager extends BaseManager
 {
-    public function getAllUsers(): array 
+    public function getAllUser(): array
     {
         $query = $this->pdo->query("SELECT * FROM User");
 
-        $users = [];
+        $user = [];
 
-        while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $users[] = new Users($data);
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $user[] = new User($data);
         }
 
-        return $users;
+        return $user;
     }
 
-    public function getUserById(int $id): ?Users
+    public function getUserById(int $id): ?User
     {
         $query = $this->pdo->prepare("SELECT * FROM User WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
 
-        $users = [];
+        $user = [];
 
         $data = $query->fetch(\PDO::FETCH_ASSOC);
 
         if (!$data) return null;
 
-        return new Users($data);
-        
-    }   
+        return new User($data);
+    }
 
-    public function getUserByUsername(string $username): ?Users
+    public function getUserByUsername(string $username): ?User
     {
         $query = $this->pdo->prepare("SELECT * FROM User WHERE username = :username");
         $query->bindValue('username', $username);
@@ -47,8 +46,7 @@ class UsersManager extends BaseManager
 
         if (!$data) return null;
 
-        return new Users($data);
-        
+        return new User($data);
     }
 
 
@@ -59,7 +57,7 @@ class UsersManager extends BaseManager
         $query->execute();
     }
 
-    public function insertUser(Users $user): bool
+    public function insertUser(User $user): bool
     {
         $query = $this->pdo->prepare("INSERT INTO User (username, password, email, role) VALUES (:username, :password, :email, :role)");
         $query->bindValue('username', $user->getUsername());
