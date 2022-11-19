@@ -10,7 +10,7 @@ class UsersManager extends BaseManager
 {
     public function getAllUsers(): array 
     {
-        $query = $this->pdo->query("SELECT * FROM Users");
+        $query = $this->pdo->query("SELECT * FROM User");
 
         $users = [];
 
@@ -23,7 +23,7 @@ class UsersManager extends BaseManager
 
     public function getUserById(int $id): ?Users
     {
-        $query = $this->pdo->prepare("SELECT * FROM Users WHERE id = :id");
+        $query = $this->pdo->prepare("SELECT * FROM User WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
 
@@ -39,7 +39,7 @@ class UsersManager extends BaseManager
 
     public function getUserByUsername(string $username): ?Users
     {
-        $query = $this->pdo->prepare("SELECT * FROM Users WHERE username = :username");
+        $query = $this->pdo->prepare("SELECT * FROM User WHERE username = :username");
         $query->bindValue('username', $username);
         $query->execute();
 
@@ -54,14 +54,14 @@ class UsersManager extends BaseManager
 
     public function deleteUser(int $id)
     {
-        $query = $this->pdo->prepare("DELETE * FROM Users WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE * FROM User WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
     }
 
     public function insertUser(Users $user): bool
     {
-        $query = $this->pdo->prepare("INSERT INTO Users (username, password, email, role) VALUES (:username, :password, :email, :role)");
+        $query = $this->pdo->prepare("INSERT INTO User (username, password, email, role) VALUES (:username, :password, :email, :role)");
         $query->bindValue('username', $user->getUsername());
         $query->bindValue('password', $user->getPassword());
         $query->bindValue('email', $user->getEmail());

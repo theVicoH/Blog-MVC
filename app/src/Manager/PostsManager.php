@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use Datetime;
 use App\Entity\Posts;
 use App\Factory\PDOFactory;
 use App\Interfaces\Database;
@@ -12,7 +13,7 @@ class PostsManager extends BaseManager
     // récupére tous les posts
     public function getAllPosts(): array 
     {
-        $query = $this->pdo->query("SELECT * FROM Posts");
+        $query = $this->pdo->query("SELECT * FROM Post");
 
         $posts = [];
 
@@ -27,7 +28,7 @@ class PostsManager extends BaseManager
     // récupére un post par son id
     public function getPostById(int $id): ?Posts
     {
-        $query = $this->pdo->query("SELECT * FROM Posts WHERE id= :id");
+        $query = $this->pdo->prepare("SELECT * FROM Post WHERE id= :id");
         $query->bindValue('id', $id);
         $query -> execute();
 
@@ -63,7 +64,7 @@ class PostsManager extends BaseManager
     // supprime le post avec son id
     public function deletePost(int $id)
     {
-        $query = $this->pdo->query("DELETE * FROM Posts WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE * FROM Post WHERE id = :id");
         $query->bindValue('id', $id);
         $query -> execute();
     }
@@ -71,16 +72,13 @@ class PostsManager extends BaseManager
     // ajoute un post
     public function InsertPost(Posts $posts): void
     {
-        $query = $this->pdo->query("INSERT INTO Posts (title, content, image, user_id) VALUES (:title, :content, :image, :user_id");
-    
+        $query = $this->pdo->prepare("INSERT INTO Post (title, content, image, user_id, datetime) VALUES (:title, :content, :image, :user_id, STR_TO_DATE(:datetime, '%d/%m/%Y %H:%i:%s'))");
         $query->bindValue('title', $posts->getTitle());
         $query->bindValue('content', $posts->getContent());
         $query->bindValue('image', $posts->getImage());
-        
-        $query->bindValue('user_id', $posts->getUserId());
-
-        $query -> execute();
-
+        $query->bindValue('datetime', $posts->getDatetime()->format('d/m/Y H:i:s'));
+        $query->bindValue('user_id', $posts->getUserId() ?? 1, \PDO::PARAM_INT);
+        $query->execute();
     }
 
 

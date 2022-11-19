@@ -1,48 +1,49 @@
 <?php 
 
 namespace App\Entity;
-
-
+use Datetime;
 
 class Posts 
 {
-    private int $id;
-    private string $title;
-    private string $content;
-    private int $user_id;
-    private string $image;
-    private string $datetime;
+    private ?int $id = null;
+    private ?string $title = null;
+    private ?string $content = null;
+    private ?int $user_id = null;
+    private ?string $image = null;
+    private \Datetime $datetime;
 
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->user_id;
     }
     
-    public function getImage() : string
+    public function getImage() : ?string
     {
         return $this->image;
     }
     
-    public function getDateTime(): string
+    public function getDatetime() 
     {
         return $this->datetime;
     }
 
-
-
+    public function getDatetimeMYSQL(): ?string
+    {
+        return $this->datetime?->format('Y-m-d h:i:s');
+    }
 
     public function setId(int $id): self
     {
@@ -75,12 +76,14 @@ class Posts
         return $this;
     }
     
-    public function setDateTime(string $datetime):self
+    public function setDatetime($datetime):self
 
     {
         $this->datetime = $datetime;
         return $this;
     }
+
+
 
 }
 ?>

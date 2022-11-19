@@ -1,3 +1,30 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
 
-echo 'coucou je suis la page ajouter un post ! ';
+        
+    <form action="/ajouter-post" method="POST" enctype='multipart/form-data'>
+
+    <div class="form">
+        <input type="text" class="input"  id="title" name="title" placeholder="title" required>
+    </div>
+
+    <div class="form">
+        <input type="text" class="input"  id="content" name="content" placeholder="content" required>
+    </div>
+
+    <div class="form">
+        <input type="file" name='file'>
+    </div>
+    
+    <button type="submit" class="btn">Publier</button>
+
+    </form>
+</body>
+</html>

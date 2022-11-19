@@ -1,5 +1,11 @@
 <?php
 
+// mettre session start(); ici
+
+// moment login mettre ça au bon endroit
+// $_SESSION['id'] = user->getId();
+// user === mon objet
+
 use App\Entity\Users;
 
 require_once "vendor/autoload.php";
@@ -8,7 +14,6 @@ switch ($_SERVER["REQUEST_URI"]) {
 
     case "/":
         break;
-        // comment gérer l'index -> quand je mets qql chose ce qql chose s'affiche sur les autres pages aussi
 
     case "/login":
         $method = new \App\Controller\UsersController();

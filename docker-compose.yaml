@@ -18,7 +18,7 @@ services:
             MARIADB_DATABASE: data
             MARIADB_ROOT_PASSWORD: password
         volumes:
-            - db_data:/var/lib/mysql
+            #- db_data:/var/lib/mysql
             - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
 
     adminer:
@@ -26,5 +26,5 @@ services:
         ports:
             - '5001:8080'
 
-volumes:
-    db_data:
+#volumes:
+#    db_data:
