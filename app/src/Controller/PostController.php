@@ -35,9 +35,10 @@ class PostController extends AbstractController {
 
     public function homepage()
     {
-        $manager = new PostManager(new PDOFactory());
-        $Post = $manager->getAllPost();
-        $this->render("homepage.php", ["Post" => $Post], "Tous les Post");
+        $postManager = new PostManager(new PDOFactory());
+        $Post = $postManager->getAllPost();
+
+        $this->render("homepage.php", ["Post" => $Post]);
     }
 
     public function homepageAdmin()

@@ -71,7 +71,7 @@ class PostManager extends BaseManager
     // ajoute un post
     public function InsertPost(Post $post): void
     {
-        $query = $this->pdo->prepare("INSERT INTO Post (title, content, image, user_id, datetime) VALUES (:title, :content, :image, :user_id, STR_TO_DATE(:datetime, '%d/%m/%Y %H:%i:%s'))");
+        $query = $this->pdo->prepare("INSERT INTO Post (title, content, image, userId, datetime) VALUES (:title, :content, :image, :user_id, STR_TO_DATE(:datetime, '%d/%m/%Y %H:%i:%s'))");
         $query->bindValue('title', $post->getTitle());
         $query->bindValue('content', $post->getContent());
         $query->bindValue('image', $post->getImage());

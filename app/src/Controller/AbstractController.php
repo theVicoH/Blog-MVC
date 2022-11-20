@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controller;
+use App\Manager\UserManager;
+use App\Factory\PDOFactory;
+
 
 abstract class AbstractController
 {
@@ -8,6 +11,9 @@ abstract class AbstractController
     {
         $view = dirname(__DIR__, 2) . '/src/views/' . $view;
         $base = dirname(__DIR__, 2) . '/src/views/base.php';
+
+        $userManager = new UserManager(new PDOFactory());
+   
 
         ob_start();
         foreach ($args as $key => $value) {

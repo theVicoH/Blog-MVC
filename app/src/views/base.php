@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title><?= $_pageTitle; ?></title>
 </head>
-<body class="bg-slate-200 flex justify-center">
-    <div class="grid gap-5 w-full h-full">
+<body class="bg-slate-100">
+    <div class="grid gap-y-3 p-3 sm:flex sm:justify-center sm:grid sm:gap-y-3 w-screen sm:p-3">
         <?= $_pageContent; ?>
     </div>
     
