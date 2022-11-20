@@ -16,7 +16,8 @@ class CommentController extends AbstractController
         $commentManager = new CommentManager(new PDOFactory());
         $Comment = $commentManager->getAllComment();
         return $Comment;
-
+    }
+    
     public function ajouterCommentaire()
     {
         session_start();
