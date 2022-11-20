@@ -34,6 +34,7 @@ class PostController extends AbstractController {
 
         $manager = new PostManager(new PDOFactory());
         $manager->insertPost($newPost);
+        header('Location: /homepage');
     }
 
     public function homepage()

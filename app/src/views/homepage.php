@@ -19,9 +19,12 @@ foreach ($Post as $post) {
         <p class="pb-10 px-10"><?php echo $post->getContent(); ?></p>
         <p><?php echo $post->getDatetime(); ?></p>
         <p><?php echo $User["username"]; ?></p>
+        
 
 
     </div>
+    
 <?php
 }
 ?>
+<a href="/ajouter-post" class="fixed text-4xl text-indigo-400 top-[50px] right-[50px]">+</a>
