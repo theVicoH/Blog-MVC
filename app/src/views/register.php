@@ -47,7 +47,6 @@
     <p>Se connecter <a href="login" class="text-indigo-400">ici</a>.</p>
 
 
-
     
 </body>
 </html>
