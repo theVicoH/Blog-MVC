@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Post
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    user_id int NOT NULL,
+    userId int NOT NULL,
     image TEXT NOT NULL,
     datetime DATETIME NOT NULL
 );
@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS Comment
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content TEXT NOT NULL,
-    user_id int NOT NULL,
-    post_id int NOT NULL,
-    com_id int DEFAULT NULL,
+    userId int NOT NULL,
+    postId int NOT NULL,
+    comId int DEFAULT NULL,
     datetime DATETIME NOT NULL
 );
 

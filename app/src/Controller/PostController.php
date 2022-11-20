@@ -11,6 +11,9 @@ class PostController extends AbstractController {
     
     public function ajouterPost()
     {
+        session_start();
+        $id = $_SESSION['id'];
+        var_dump($id);die;
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             include dirname(__DIR__, 1) . '/views/ajt-post.php';
             exit;
@@ -27,6 +30,7 @@ class PostController extends AbstractController {
                 ->setTitle($title)
                 ->setContent($content)
                 ->setImage( '/uploads/' . $_FILES['file']['name'])
+                -setUser($id)
                 ->setDatetime($datetime);
 
         $manager = new PostManager(new PDOFactory());
