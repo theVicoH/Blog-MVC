@@ -36,9 +36,9 @@ class PostController extends AbstractController {
     public function homepage()
     {   
         session_start();
+        $this->redirection();
         $postManager = new PostManager(new PDOFactory());
         $Post = $postManager->getAllPost();
-        // var_dump($_SESSION['username']);
         $this->deconnexion();
         $this->render("homepage.php", ["Post" => $Post]);
     }

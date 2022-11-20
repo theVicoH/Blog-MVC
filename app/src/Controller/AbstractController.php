@@ -27,12 +27,18 @@ abstract class AbstractController
 
         require_once $base;
     }
-    
+
     public function deconnexion(){
         if (isset($_POST['submit_deconnexion'])) {
             $_SESSION = [];
             session_destroy();
             unset($_SESSION);
+            header('Location: /login');
+        }
+    }
+
+    public function redirection(){
+        if($_SESSION == []){
             header('Location: /login');
         }
     }
