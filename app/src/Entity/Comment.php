@@ -1,17 +1,18 @@
 <?php
 
-
 namespace App\Entity;
+use Datetime;
+
 class Comment extends BaseEntity{
 
-    private int $id;
-    private string $content;
-    private int $userId;
-    private int $postId;
-    private int $comId;
-    private string $dateTime;
+    private ?int $id = null;
+    private ?string $content = null;
+    private ?int $userId = null;
+    private ?int $postId = null;
+    private $comId = null;
+    private Datetime | string $datetime;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -22,7 +23,7 @@ class Comment extends BaseEntity{
         return $this;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -33,7 +34,7 @@ class Comment extends BaseEntity{
         return $this;
     }
 
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
@@ -44,7 +45,7 @@ class Comment extends BaseEntity{
         return $this;
     }
 
-    public function getPostId(): int
+    public function getPostId(): ?int
     {
         return $this->postId;
     }
@@ -55,25 +56,25 @@ class Comment extends BaseEntity{
         return $this;
     }
 
-    public function getComId(): int
+    public function getComId(): ?int
     {
         return $this->comId;
     }
 
-    public function setComId(int $comId): self
+    public function setComId($comId): self
     {        
         $this->comId = $comId;
         return $this;
     }
 
-    public function getDateTIme(): string
+    public function getDatetime() : Datetime | string
     {
-        return $this->dateTime;
+        return $this->datetime;
     }
 
-    public function setDateTime(string $dateTime): self
+    public function setDatetime($datetime): self
     {
-        $this->dateTime = $dateTime;
+        $this->datetime = $datetime;
         return $this;
     }
 }

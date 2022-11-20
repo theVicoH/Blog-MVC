@@ -29,7 +29,7 @@
         </div>
 
         <div class="form">
-            <input type="text" class="rounded-md border-2 border-indigo-400 m-1 text-2xl"  id="content" name="content" placeholder="content" required>
+            <textarea id="content" class="rounded-md border-2 border-indigo-400 m-1 text-2xl" name="content" rows="5" cols="33" placeholder="content" required></textarea>
         </div>
 
         <div class="form">
