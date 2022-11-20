@@ -49,7 +49,7 @@ class UserManager extends BaseManager
         return new User($data);
     }
 
-    public function getUserUsername(int $id): ?array
+    public function getUsernameById(int $id): ?array
     {
         $query = $this->pdo->prepare("SELECT username FROM User WHERE id = :id");
         $query->bindValue('id', $id);

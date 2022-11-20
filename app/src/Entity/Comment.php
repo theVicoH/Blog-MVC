@@ -69,7 +69,7 @@ class Comment extends BaseEntity{
     }
 
 
-    public function getDateTIme(): Datetime | string
+    public function getDateTime(): Datetime | string
 
     {
         return $this->datetime;

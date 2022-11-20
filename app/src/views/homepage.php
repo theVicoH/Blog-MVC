@@ -1,6 +1,6 @@
 <?php
 foreach ($Post as $post) {
-    $userPost = $userManager->getUserUsername($post->getUserId());
+    $userPost = $userManager->getUsernameById($post->getUserId());
 ?>
 
     <div class="w-full sm:w-[616px] grid gap-y-6 rounded-md bg-white pb-7">
@@ -27,21 +27,27 @@ foreach ($Post as $post) {
 
             <button class="col-span-2 rounded-full text-white bg-indigo-400" type="submit" name="reply-btn">Reply</button>
         </form>
-        <?php foreach($Comment as $comment){
-        if($comment->getPostId() === $post->getId()){   
-            $userCom = $userManager->getUserUsername($comment->getUserId());
-        ?>  
-            <div class="px-7">
-                <p><?php echo $userCom['username'];?></p>
-                <p><?php echo $comment->getContent();?></p>
-            </div>
-            
+        <div class="grid gap-y-4">
+            <?php foreach($Comment as $comment){
+            if($comment->getPostId() === $post->getId()){   
+                $userCom = $userManager->getUsernameById($comment->getUserId());
+            ?>  
+                <div class="grid gap-y-1 mx-7 bg-slate-50 rounded-md px-7 py-3">
+                    <div class="flex justify-between items-center">
+                        <p class="pr-2 text-base font-bold text-indigo-400"><?php echo $userCom['username'];?></p>
+                        <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
+                    </div>
+                    <p class='text-sm text-gray-500'><?php echo $comment->getContent();?></p>
+                </div>
+                
+                <?php
+                }
+                ?>
             <?php
             }
             ?>
-        <?php
-        }
-        ?>
+        </div>
+        
     </div>
     
 <?php
