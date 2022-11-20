@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS Comment
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content TEXT NOT NULL,
-    userId int NOT NULL,
-    postId int NOT NULL,
-    comId int DEFAULT NULL,
+    userId int NOT NULL, --celui qui écrit le commentaire
+    postId int NOT NULL, --post sur lequel on pose un commentaire
+    comId int DEFAULT NULL, --réponse à un commentaire
     datetime DATETIME NOT NULL
 );
 

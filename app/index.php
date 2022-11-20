@@ -1,7 +1,5 @@
 <?php
 
-use App\Entity\User;
-
 require_once "vendor/autoload.php";
 
 switch ($_SERVER["REQUEST_URI"]) {
@@ -31,9 +29,9 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->homepageAdmin();
         break;
 
-    case "/voir-post":
-        // voir une autre manière
-        // /voir-post?id=1
+    case "/ajouter-commentaire":
+        $method = new \App\Controller\CommentController();
+        $method->ajouterCommentaire();
         break;
 
     case "/ajouter-post":

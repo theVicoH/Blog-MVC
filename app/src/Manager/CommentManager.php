@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Manager;
 
 use App\Entity\Comment;
@@ -40,6 +38,17 @@ class CommentManager extends BaseManager
     {
         $query = $this->pdo->query("DELETE * FROM Comment WHERE id = :id");
         $query->bindValue('id', $id);
+        $query->execute();
+    }
+
+    public function InsertComment(Comment $comment): void
+    {
+        $query = $this->pdo->prepare("INSERT INTO Comment (content, userId, postId, comId, datetime ) VALUES (:content,:userId, :postId, :comId, STR_TO_DATE(:datetime, '%d/%m/%Y %H:%i:%s'))");
+        $query->bindValue('content', $comment->getContent());
+        $query->bindValue('userId', $comment->getUserId());
+        $query->bindValue('postId', $comment->getPostId());
+        $query->bindValue('comId', $comment->getComId());
+        $query->bindValue('datetime', $comment->getDatetime()->format('d/m/Y H:i:s'));
         $query->execute();
     }
 }
