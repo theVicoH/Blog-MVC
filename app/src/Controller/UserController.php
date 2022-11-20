@@ -9,8 +9,11 @@ use App\Entity\User;
 class UserController extends AbstractController
 {
     public function afficherUser()
-    {
-        include dirname(__DIR__, 1) . '/views/afficher-User.php';
+    {   
+        session_start();
+        $method = new UserManager(new PDOFactory());
+        $User = $method->getAllUser();
+        include dirname(__DIR__, 1) . '/views/afficher-users.php';
     }
 
 

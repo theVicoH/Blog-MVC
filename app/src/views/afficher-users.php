@@ -1,3 +1,11 @@
 <?php
 
-echo 'coucou je suis la page afficher User !';
+
+foreach ($User as $user) { ?>
+    <div>
+        <?php echo $user->getUsername(); ?>
+        <?php echo $user->getId(); ?>
+    </div>
+<?php
+}
+?>
