@@ -10,8 +10,9 @@ use App\Entity\Post;
 class PostController extends AbstractController {
     
     public function ajouterPost()
-    {   
+    {
         session_start();
+        $id = $_SESSION['id'];
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             include dirname(__DIR__, 1) . '/views/ajt-post.php';
             exit;
@@ -33,6 +34,7 @@ class PostController extends AbstractController {
 
         $manager = new PostManager(new PDOFactory());
         $manager->insertPost($newPost);
+        header('Location: /homepage');
     }
 
     public function homepage()
