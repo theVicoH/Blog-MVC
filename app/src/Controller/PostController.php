@@ -13,7 +13,6 @@ class PostController extends AbstractController {
     {
         session_start();
         $id = $_SESSION['id'];
-        var_dump($id);die;
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             include dirname(__DIR__, 1) . '/views/ajt-post.php';
             exit;
@@ -30,7 +29,7 @@ class PostController extends AbstractController {
                 ->setTitle($title)
                 ->setContent($content)
                 ->setImage( '/uploads/' . $_FILES['file']['name'])
-                -setUser($id)
+                ->setUserId($_SESSION['id'])
                 ->setDatetime($datetime);
 
         $manager = new PostManager(new PDOFactory());
@@ -40,9 +39,9 @@ class PostController extends AbstractController {
     public function homepage()
     {   
         session_start();
+        $this->redirection();
         $postManager = new PostManager(new PDOFactory());
         $Post = $postManager->getAllPost();
-        // var_dump($_SESSION['username']);
         $this->deconnexion();
         $this->render("homepage.php", ["Post" => $Post]);
     }
