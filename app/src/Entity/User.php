@@ -8,7 +8,7 @@ class User extends BaseEntity
     private string $username;
     private string $password;
     private string $email;
-    private string $role = 'user';
+    private string $role;
 
     public function getId(): int
     {

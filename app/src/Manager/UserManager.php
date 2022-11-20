@@ -71,11 +71,10 @@ class UserManager extends BaseManager
 
     public function insertUser(User $user): bool
     {
-        $query = $this->pdo->prepare("INSERT INTO User (username, password, email, role) VALUES (:username, :password, :email, :role)");
+        $query = $this->pdo->prepare("INSERT INTO User (username, password, email) VALUES (:username, :password, :email");
         $query->bindValue('username', $user->getUsername());
         $query->bindValue('password', $user->getPassword());
         $query->bindValue('email', $user->getEmail());
-        $query->bindValue('role', $user->getRole());
         return (bool)$query->execute();
     }
 }
