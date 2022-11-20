@@ -39,7 +39,7 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->ajouterPost();
         break;
 
-    case "/show-User":
+    case "/afficher-users":
         $method = new \App\Controller\UserController();
         $method->afficherUser();
         break;
