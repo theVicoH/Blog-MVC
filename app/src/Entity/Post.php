@@ -10,7 +10,7 @@ class Post extends BaseEntity
     private ?string $content = null;
     private ?int $user_id = null;
     private ?string $image = null;
-    private \Datetime $datetime;
+    private Datetime | string $datetime;
 
 
     public function getId(): ?int
@@ -35,7 +35,7 @@ class Post extends BaseEntity
         return $this->image;
     }
     
-    public function getDatetime() 
+    public function getDatetime() : Datetime | string
     {
         return $this->datetime;
     }
@@ -71,7 +71,7 @@ class Post extends BaseEntity
         return $this;
     }
     
-    public function setDatetime($datetime):self
+    public function setDatetime($datetime): self
     {
         $this->datetime = $datetime;
         return $this;
