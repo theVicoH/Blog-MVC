@@ -6,6 +6,7 @@ use Datetime;
 use App\Manager\PostManager;
 use App\Factory\PDOFactory;
 use App\Entity\Post;
+use App\Controller\CommentController;
 
 class PostController extends AbstractController {
     
@@ -43,8 +44,11 @@ class PostController extends AbstractController {
         $this->redirection();
         $postManager = new PostManager(new PDOFactory());
         $Post = $postManager->getAllPost();
+
+        $commentManager = new CommentController();
+        $Comment = $commentManager->showComment();
         $this->deconnexion();
-        $this->render("homepage.php", ["Post" => $Post]);
+        $this->render("homepage.php", ["Post" => $Post], ["Comment" => $Comment]);
     }
 
     public function homepageAdmin()

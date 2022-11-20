@@ -2,14 +2,15 @@
 
 
 namespace App\Entity;
+use Datetime;
 class Comment extends BaseEntity{
 
     private int $id;
     private string $content;
     private int $userId;
     private int $postId;
-    private int $comId;
-    private string $dateTime;
+    private ?int $comId;
+    private Datetime | string $dateTime;
 
     public function getId(): int
     {
@@ -60,13 +61,13 @@ class Comment extends BaseEntity{
         return $this->comId;
     }
 
-    public function setComId(int $comId): self
+    public function setComId(?int $comId): ?self
     {        
         $this->comId = $comId;
         return $this;
     }
 
-    public function getDateTIme(): string
+    public function getDateTIme(): Datetime | string
     {
         return $this->dateTime;
     }

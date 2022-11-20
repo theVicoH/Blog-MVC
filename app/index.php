@@ -21,12 +21,9 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->register();
         break;
 
-
     case "/homepage":
-        $methodPost = new \App\Controller\PostController();
-        $methodPost->homepage();
-        $methodUser = new \App\Controller\UserController();
-        $methodUser->deconnexion();
+        $method = new \App\Controller\PostController();
+        $method->homepage();
         break;
 
     case "/homepage-admin":

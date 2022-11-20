@@ -18,7 +18,6 @@ class CommentManager extends BaseManager
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
             $Comment[] = new Comment($data);
         }
-
         return $Comment;
     }
 
