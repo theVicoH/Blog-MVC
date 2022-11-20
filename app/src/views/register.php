@@ -36,7 +36,6 @@
     <p>Se connecter <a href="login">ici</a>.</p>
 
 
-
     
 </body>
 </html>
