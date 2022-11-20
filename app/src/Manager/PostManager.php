@@ -12,7 +12,7 @@ class PostManager extends BaseManager
     // récupére tous les posts
     public function getAllPost(): array 
     {
-        $query = $this->pdo->query("SELECT * FROM Post");
+        $query = $this->pdo->query("SELECT * FROM Post ORDER BY datetime DESC");
 
         $posts = [];
 
