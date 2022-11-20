@@ -76,7 +76,7 @@ class PostManager extends BaseManager
         $query->bindValue('content', $post->getContent());
         $query->bindValue('image', $post->getImage());
         $query->bindValue('datetime', $post->getDatetime()->format('d/m/Y H:i:s'));
-        $query->bindValue('user_id', $post->getUserId() ?? 1, \PDO::PARAM_INT);
+        $query->bindValue('user_id', $post->getUserId(), \PDO::PARAM_INT);
         $query->execute();
     }
 

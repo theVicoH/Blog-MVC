@@ -10,7 +10,8 @@ use App\Entity\Post;
 class PostController extends AbstractController {
     
     public function ajouterPost()
-    {
+    {   
+        session_start();
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             include dirname(__DIR__, 1) . '/views/ajt-post.php';
             exit;
@@ -27,6 +28,7 @@ class PostController extends AbstractController {
                 ->setTitle($title)
                 ->setContent($content)
                 ->setImage( '/uploads/' . $_FILES['file']['name'])
+                ->setUserId($_SESSION['id'])
                 ->setDatetime($datetime);
 
         $manager = new PostManager(new PDOFactory());

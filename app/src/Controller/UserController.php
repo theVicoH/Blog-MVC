@@ -72,7 +72,8 @@ class UserController extends AbstractController
             
             if (password_verify($password, $pw)) {
                 $_SESSION['username'] = $username;
-                header('Location: /homepage');
+                $_SESSION['id'] = $user->getId();
+                header('Location: /ajouter-post');
             } else {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
             }
