@@ -16,14 +16,17 @@ switch ($_SERVER["REQUEST_URI"]) {
 
 
     case "/register":
+        
         $method = new \App\Controller\UserController();
         $method->register();
         break;
 
 
     case "/homepage":
-        $method = new \App\Controller\PostController();
-        $method->homepage();
+        $methodPost = new \App\Controller\PostController();
+        $methodPost->homepage();
+        $methodUser = new \App\Controller\UserController();
+        $methodUser->deconnexion();
         break;
 
     case "/homepage-admin":

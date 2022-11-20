@@ -52,12 +52,9 @@ class UserController extends AbstractController
     }
 
 
-
-
-
-
     public function login()
-    {
+    {   
+        session_start();
         if (isset($_POST['username']) && isset($_POST['password'])) {
 
             $username = $_POST['username'];
@@ -74,6 +71,7 @@ class UserController extends AbstractController
             }
             
             if (password_verify($password, $pw)) {
+                $_SESSION['username'] = $username;
                 header('Location: /homepage');
             } else {
                 throw new \Exception('WRONG USERNAME OR PASSWORD');
@@ -86,4 +84,5 @@ class UserController extends AbstractController
 
         include dirname(__DIR__, 1) . '/views/login.php';
     }
+
 }
