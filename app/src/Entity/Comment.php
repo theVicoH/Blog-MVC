@@ -5,12 +5,12 @@ use Datetime;
 
 class Comment extends BaseEntity{
 
-    private ?int $id = null;
-    private ?string $content = null;
-    private ?int $userId = null;
-    private ?int $postId = null;
-    private $comId = null;
-    private Datetime | string $datetime;
+    private int $id;
+    private string $content;
+    private int $userId;
+    private int $postId;
+    private ?int $comId;
+    private Datetime | string $dateTime;
 
     public function getId(): ?int
     {
@@ -61,13 +61,16 @@ class Comment extends BaseEntity{
         return $this->comId;
     }
 
-    public function setComId($comId): self
+    public function setComId(?int $comId): ?self
+
     {        
         $this->comId = $comId;
         return $this;
     }
 
-    public function getDatetime() : Datetime | string
+
+    public function getDateTIme(): Datetime | string
+
     {
         return $this->datetime;
     }

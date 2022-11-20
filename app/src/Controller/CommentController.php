@@ -1,13 +1,22 @@
 <?php
 namespace App\Controller;
 
+
+
 use Datetime;
+
 use App\Manager\CommentManager;
 use App\Factory\PDOFactory;
 use App\Entity\Comment;
 
 class CommentController extends AbstractController
 {
+
+    public function showComment(){
+        $commentManager = new CommentManager(new PDOFactory());
+        $Comment = $commentManager->getAllComment();
+        return $Comment;
+
     public function ajouterCommentaire()
     {
         session_start();
@@ -27,5 +36,6 @@ class CommentController extends AbstractController
         $manager = new CommentManager(new PDOFactory());
         $manager->insertComment($newComment);
         header('Location: /homepage');
+
     }
 }

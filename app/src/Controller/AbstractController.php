@@ -7,8 +7,9 @@ use App\Factory\PDOFactory;
 
 abstract class AbstractController
 {
-    public function render(string $view, array $args = [], string $title = "Document")
-    {
+    public function render(string $view, array $args = [], array $com = [])
+    {   
+        $title = "Document";
         $view = dirname(__DIR__, 2) . '/src/views/' . $view;
         $base = dirname(__DIR__, 2) . '/src/views/base.php';
 
@@ -17,6 +18,9 @@ abstract class AbstractController
 
         ob_start();
         foreach ($args as $key => $value) {
+            $$key = $value;
+        }
+        foreach ($com as $key => $value) {
             $$key = $value;
         }
 
