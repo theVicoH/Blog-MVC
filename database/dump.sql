@@ -21,11 +21,16 @@ CREATE TABLE IF NOT EXISTS Comment
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content TEXT NOT NULL,
-    userId int NOT NULL, --celui qui écrit le commentaire
-    postId int NOT NULL, --post sur lequel on pose un commentaire
-    comId int DEFAULT NULL, --réponse à un commentaire
+    userId int NOT NULL,
+    postId int NOT NULL,
+    comId int DEFAULT NULL,
     datetime DATETIME NOT NULL
 );
+--     userId int NOT NULL, --celui qui écrit le commentaire
+--     postId int NOT NULL, --post sur lequel on pose un commentaire
+--     comId int DEFAULT NULL, --réponse à un commentaire
+
+
 
 ALTER TABLE Post ADD CONSTRAINT FOREIGN KEY (userId) REFERENCES User(id);
 
