@@ -49,4 +49,12 @@ Ce projet consiste à créer un blog grâce à la méthode MVC (motif d'architec
 - Mot de passe : **password**
 - Base de donnée : **data**
 
+__________________________________________________
+
+# Projet réalisé par :
+
+- ### LACES Vitomir
+- ### MESSAOUI Dounia
+- ### OUALLET Sandie
+
 
