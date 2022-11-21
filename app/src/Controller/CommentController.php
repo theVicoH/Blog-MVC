@@ -45,7 +45,19 @@ class CommentController extends AbstractController
                 header('Location: /homepage');
         }
         header('Location: /homepage');
-
-
     }
+
+
+
+    public function deleteComment()
+    {
+        if(isset($_POST['submit_delete']) && isset($_POST['comId']) ) {
+            $id = (int)$_POST['comId'];
+            $manager = new CommentManager(new PDOFactory());
+            $manager->deleteComment($id);
+            // var_dump($id);die;
+        }
+    }
+
+
 }
