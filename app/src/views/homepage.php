@@ -66,24 +66,31 @@ foreach ($Post as $post) {
                     </form>
                     
                 </div>
+
+
+
+                <!-- on récup l'id du com de base et celui du com réponse -->
                 <?php foreach($Comment as $respond){
                     if($comment->getId()=== $respond->getComId()){
                         $userRespond = $userManager->getUsernameById($respond->getUserId())
                     ?>
+
+                    <!-- div du commentaire -->
                     <div class="grid gap-y-2 bg-slate-50 mr-7 ml-14 px-7 py-3 rounded-md">
                         <div class="flex justify-between items-center">
+                            <!-- pseudo -->
                             <p class="text-indigo-400 font-bold text-base"><?php echo $userRespond['username'];?></p>
+                            <!-- Datetime -->
                             <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
                             
                         </div>
+                        <!-- <button>x</button> -->
                         <p class="text-sm text-gray-500"><?php echo $respond->getContent();?></p>
                     </div>
-                    <?php
-                    }}?>
-                <?php
+                        <?php
+                        }
+                    }
                 }
-                ?>
-            <?php
             }
             ?>
         </div>
