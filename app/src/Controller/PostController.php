@@ -46,6 +46,7 @@ class PostController extends AbstractController {
         $Post = $postManager->getAllPost();
 
         $commentManager = new CommentController();
+        $commentManager->deleteComment();
         $Comment = $commentManager->showComment();
         $this->deconnexion();
         $this->render("homepage.php", ["Post" => $Post], ["Comment" => $Comment]);

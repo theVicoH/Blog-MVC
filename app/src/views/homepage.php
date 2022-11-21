@@ -7,7 +7,7 @@ foreach ($Post as $post) {
 
         <!--  Titre du post -->
         <h2 class="pt-7 px-7 text-2xl text-indigo-400 font-semibold"><?php echo $post->getTitle(); ?></h2>
-        
+
         <!-- image du post -->
         <?php
         if ($post->getImage() != "/uploads/") { ?>
@@ -36,59 +36,99 @@ foreach ($Post as $post) {
         </form>
 
 
+
+
+
+
+
+
+
+
+        <!-- PARTIE COMMENTAIRE -->
         <!-- commentaires du post -->
         <div class="grid gap-y-4">
 
-        <!-- on récup les coms et l'id de l'utilisateur -->
+            <!-- on récup les coms et l'id de l'utilisateur -->
             <?php foreach($Comment as $comment){
             if($comment->getPostId() === $post->getId() && $comment->getComId() === null){   
                 $userCom = $userManager->getUsernameById($comment->getUserId());
             ?>  
 
                 <!-- div du commentaire -->
-                <div class="grid gap-y-2 mx-7 bg-slate-100 rounded-md px-7 py-3">
-
-                    <div class="flex justify-between items-center">
-                        <!-- affichage de l'Username -->
-                        <p class="text-base font-bold text-indigo-400"><?php echo $userCom['username'];?></p>
-                        <!-- affichage du Datetime -->
-                        <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
+                <div>
+                    <div class="grid gap-y-2 mx-7 bg-slate-100 rounded-md px-7 py-3">
+    
+                        <div class="flex justify-between items-center">
+                            <!-- affichage de l'Username -->
+                            <p class="text-base font-bold text-indigo-400"><?php echo $userCom['username'];?></p>
+                            <!-- affichage du Datetime -->
+                            <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
+                        </div>
+    
+                        <!-- Contenu du commentaire -->
+                        <p class='text-sm text-gray-500 max-w-[504px]' style="word-wrap: break-word;"><?php echo $comment->getContent();?></p>
+                    
+                        
+                        <!-- Bouton réponse au commentaire -->
+                        <form action="/ajouter-commentaire" method="POST" class="grid grid-cols-10 gap-x-2">
+                            <input type="text" name="comment" placeholder="Comment" class="col-span-8 border-2 border-slate-200 rounded-full bg-slate-100 px-5 text-sm placeholder:text-slate-300 focus:text-gray-700 focus:bg-slate-100 focus:border-slate-300 focus:outline-none">
+                            <input type="hidden" name="postId" value="<?php echo $post->getId(); ?>">
+                            <input type="hidden" name="comId" value="<?php echo $comment->getId() ?>">
+                            <button type="submit" class="col-span-2 text-indigo-400 font-semibold py-1 text-sm">Répondre</button>
+                        </form> 
+                        
                     </div>
 
-                    <!-- Contenu du commentaire -->
-                    <p class='text-sm text-gray-500'><?php echo $comment->getContent();?></p>
-
-
-                    <!-- Bouton réponse au commentaire -->
-                    <form action="/ajouter-commentaire" method="POST" class="grid grid-cols-10 gap-x-2">
-                        <input type="text" name="comment" placeholder="Comment" class="col-span-8 border-2 border-slate-200 rounded-full bg-slate-100 px-5 text-sm placeholder:text-slate-300 focus:text-gray-700 focus:bg-slate-100 focus:border-slate-300 focus:outline-none">
-                        <input type="hidden" name="postId" value="<?php echo $post->getId(); ?>">
-                        <input type="hidden" name="comId" value="<?php echo $comment->getId() ?>">
-                        <button type="submit" class="col-span-2 text-indigo-400 font-semibold py-1 text-sm">Répondre</button>
-                    </form>
-                    
-                </div>
-
-
-
-                <!-- on récup l'id du com de base et celui du com réponse -->
-                <?php foreach($Comment as $respond){
+                    <!-- boutons edit et delete -->
+                    <?php if($_SESSION['id']===$comment->getUserId()){?>
+                        <div class="flex ml-7">
+                            <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                <button>edit</button>
+                            </form>
+                            <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                <button type="submit" name="submit_delete">delete</button>
+                            </form>
+                        </div>
+                    <?php } ?>
+                    <!-- PARTIE REPONSE -->
+                    <!-- on récup l'id du com de base et celui du com réponse -->
+                    <?php foreach($Comment as $respond){
                     if($comment->getId()=== $respond->getComId()){
                         $userRespond = $userManager->getUsernameById($respond->getUserId())
                     ?>
 
                     <!-- div du commentaire -->
-                    <div class="grid gap-y-2 bg-slate-50 mr-7 ml-14 px-7 py-3 rounded-md">
-                        <div class="flex justify-between items-center">
-                            <!-- pseudo -->
-                            <p class="text-indigo-400 font-bold text-base"><?php echo $userRespond['username'];?></p>
-                            <!-- Datetime -->
-                            <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
+                    <div>
+                        <div class="grid gap-y-1 bg-slate-50 mr-7 ml-14 px-7 py-3 rounded-md">
+                            <div class="flex justify-between items-center">
+                                <!-- pseudo -->
+                                <p class="text-indigo-400 font-bold text-base"><?php echo $userRespond['username'];?></p>
+                                <!-- Datetime -->
+                                <span class="text-sm text-slate-300"><?php echo $comment->getDateTime();?></span>
+                                
+                            </div>
                             
+                            <!-- contenu -->
+                            <p class="text-sm text-gray-500 max-w-[476px]"><?php echo $respond->getContent();?></p>
                         </div>
-                        <!-- <button>x</button> -->
-                        <p class="text-sm text-gray-500"><?php echo $respond->getContent();?></p>
+
+
+
+                        <?php if($_SESSION['id']===$respond->getUserId()){?>
+                            <div class="flex ml-7">
+                                <form action="homepage" method="POST" class="ml-14 text-indigo-400 font-semibold py-1 text-sm">
+                                    <button>edit</button>
+                                </form>
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $respond->getId()?>">
+                                    <button type="submit" name="submit_delete">delete</button>
+                                </form>
+                            </div>
+                        <?php } ?>
                     </div>
+
+                </div>
                         <?php
                         }
                     }

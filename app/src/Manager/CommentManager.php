@@ -21,7 +21,7 @@ class CommentManager extends BaseManager
 
     public function getCommentById(int $id): ?Comment
     {
-        $query = $this->pdo->query("SELECT * FROM Comment WHERE id = :id");
+        $query = $this->pdo->prepare("SELECT * FROM Comment WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
 
@@ -36,9 +36,14 @@ class CommentManager extends BaseManager
 
     public function deleteComment(int $id)
     {
-        $query = $this->pdo->query("DELETE * FROM Comment WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE FROM Comment WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
+
+        $query = $this->pdo->prepare("DELETE FROM Comment WHERE comId = :id");
+        $query->bindValue('id', $id);
+        $query->execute();
+
     }
 
     public function InsertComment(Comment $comment): void
