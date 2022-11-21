@@ -27,7 +27,9 @@ foreach ($Post as $post) {
 
         <!-- commtenter le post -->
         <form action="/ajouter-commentaire" method="POST" class='grid grid-cols-10 gap-x-2 px-7'>
+
             <input class='col-span-8 border-2 border-indigo-200 rounded-full py-1 px-5 text-gray-500 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder:text-indigo-200' type="text" name="comment" placeholder="Comment">
+
             <input type="hidden" name="postId" value="<?php echo $post->getId(); ?>">
             <input type="hidden" name="comId" value="<?php echo "null" ?>">
             <button class="col-span-2 rounded-full text-white bg-indigo-400" type="submit" name="reply-btn">Reply</button>
