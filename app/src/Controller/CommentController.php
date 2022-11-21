@@ -22,21 +22,30 @@ class CommentController extends AbstractController
     {
         session_start();
         $id = $_SESSION['id'];
-        $comment = $_POST['comment'];
-        $postId = $_POST['postId'];
-        $comId = null;
-        $datetime = new \DateTime();
-
-        $newComment = (new Comment())
-                ->setContent($comment)
-                ->setUserId($id)
-                ->setPostId($postId)
-                ->setComId($comId)
-                ->setDatetime($datetime);
-
-        $manager = new CommentManager(new PDOFactory());
-        $manager->insertComment($newComment);
+        
+        if(!empty($_POST['comment'])) {
+            $comment = $_POST['comment'];
+            $postId = $_POST['postId'];
+            
+            if($_POST['comId'] == "null") {
+                $comId = null;
+            } else {
+                $comId = (int)$_POST['comId'];
+            }
+            $datetime = new \DateTime();
+                $newComment = (new Comment())
+                        ->setContent($comment)
+                        ->setUserId($id)
+                        ->setPostId($postId)
+                        ->setComId($comId)
+                        ->setDatetime($datetime);
+        
+                $manager = new CommentManager(new PDOFactory());
+                $manager->insertComment($newComment);
+                header('Location: /homepage');
+        }
         header('Location: /homepage');
+
 
     }
 }
