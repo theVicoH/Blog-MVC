@@ -1,0 +1,45 @@
+# Blog-MVC
+
+## Users
+[x] - Login
+[x] - Register
+
+### Users Lambda
+[x] - Peuvent écrire post
+[x] - Peuvent écrire commentaire
+[x] - Peuvent supprimer leur post
+[x] - Peuvent supprimer leur commentaire
+
+### Users Admin
+[x] - Peuvent écrire post
+[x] - Peuvent écrire commentaire
+[] - Peuvent supprimer nptquelle post
+[] - Peuvent supprimer nptquelle commentaire
+
+
+
+## Posts
+[x] - Titre
+[x] - Contenu
+[x] - Auteur
+[x] - Date de publication
+[x] - Image d'illustration du post
+[] - Modifier post
+
+
+
+## Commentaires
+
+[x] - Auteur
+[x] - Date de publication
+[x] - Réponse à un commentaire
+[] - Modifier commentaire
+[] - Modifier réponse
+
+
+
+
+
+
+
+
