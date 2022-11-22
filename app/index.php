@@ -44,6 +44,7 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->afficherUser();
         break;
 
+
     default:
         echo 'ça existe po cette page chef ...';
 }

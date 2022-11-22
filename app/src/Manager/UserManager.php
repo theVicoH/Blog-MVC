@@ -64,7 +64,7 @@ class UserManager extends BaseManager
 
     public function deleteUser(int $id)
     {
-        $query = $this->pdo->prepare("DELETE * FROM User WHERE id = :id");
+        $query = $this->pdo->prepare("DELETE FROM User WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
     }

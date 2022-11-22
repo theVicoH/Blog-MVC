@@ -18,7 +18,7 @@
     </style>
 </head>
 <body class="bg-white">
-    <a href="/homepage" class="fixed text-m text-indigo-400 top-[50px] right-[50px]"><-retourner à l'acceuil</a>
+    <a href="/homepage" class="fixed text-xl text-indigo-400 top-[50px] right-[50px] underline">⬅️retourner à l'acceuil</a>
      
     <div>
         <form action="/ajouter-post" method="POST" enctype='multipart/form-data'>

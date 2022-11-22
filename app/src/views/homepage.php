@@ -143,3 +143,5 @@ foreach ($Post as $post) {
 }
 ?>
 <a href="/ajouter-post" class="fixed text-4xl text-indigo-400 top-[50px] right-[50px]">+</a>
+
+<a href="/afficher-users" class="fixed text-2xl text-indigo-400 top-[50px] left-[50px]">Voir les utilisateurs</a>

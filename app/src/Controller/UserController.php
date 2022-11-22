@@ -11,6 +11,7 @@ class UserController extends AbstractController
     public function afficherUser()
     {   
         session_start();
+        $this->deleteUser();
         $method = new UserManager(new PDOFactory());
         $User = $method->getAllUser();
         include dirname(__DIR__, 1) . '/views/afficher-users.php';
@@ -87,6 +88,15 @@ class UserController extends AbstractController
 
 
         include dirname(__DIR__, 1) . '/views/login.php';
+    }
+
+    public function deleteUser()
+    {
+        if(isset($_POST['submit_delete_user']) && isset($_POST['userId']) ) {
+            $id = (int)$_POST['userId'];
+            $manager = new UserManager(new PDOFactory());
+            $manager->deleteUser($id);
+        }
     }
 
 }
