@@ -19,7 +19,8 @@ class CommentManager extends BaseManager
         return $Comment;
     }
 
-    public function getCommentById(int $id): ?Comment
+    public function getCommentById(int $id): ?
+    Comment
     {
         $query = $this->pdo->prepare("SELECT * FROM Comment WHERE id = :id");
         $query->bindValue('id', $id);
