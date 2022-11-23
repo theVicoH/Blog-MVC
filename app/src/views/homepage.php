@@ -35,6 +35,12 @@ foreach ($Post as $post) {
             <button class="col-span-2 rounded-full text-white bg-indigo-400" type="submit" name="reply-btn">Reply</button>
         </form>
 
+        <!-- form pour effacer un post -->
+        <form action="homepage" method="POST">
+            <input type="hidden" name="postId" value="<?php echo $post->getId()?>">
+            <button type="submit" name="submit_delete_post" class="text-s text-white bg-indigo-400 py-2 px-4 rounded-full ml-2">delete this post ❌</button>
+        </form>
+
 
 
 

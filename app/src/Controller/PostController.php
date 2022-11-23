@@ -41,6 +41,7 @@ class PostController extends AbstractController {
     public function homepage()
     {   
         session_start();
+        $this->deletePost();
         $this->redirection();
         $postManager = new PostManager(new PDOFactory());
         $Post = $postManager->getAllPost();
@@ -55,5 +56,14 @@ class PostController extends AbstractController {
     public function homepageAdmin()
     {
         include dirname(__DIR__, 1) . '/views/homepage-admin.php';
+    }
+
+    public function deletePost()
+    {
+        if(isset($_POST['submit_delete_post']) && isset($_POST['postId']) ) {
+            $id = (int)$_POST['postId'];
+            $manager = new PostManager(new PDOFactory());
+            $manager->deletePost($id);
+        }
     }
 }
