@@ -63,19 +63,22 @@ class PostManager extends BaseManager
     // supprime le post avec son id
     public function deletePost(int $id)
     {
-        $query = $this->pdo->prepare("DELETE FROM Post WHERE id = :id");
-        $query->bindValue('id', $id);
-        $query -> execute();
+        // effacer les réponses
+        $query = $this->pdo->prepare("DELETE FROM Comment WHERE postId = :postId");
+        $query->bindValue('postId', $id);
+        $query->execute();
 
         // effacer les coms
-        $query = $this->pdo->prepare("DELETE FROM Comment WHERE postId = :id");
+        $query = $this->pdo->prepare("DELETE FROM Comment WHERE postId = :postId");
+        $query->bindValue('postId', $id);
+        $query->execute();
+
+        // effacer le post 
+        $query = $this->pdo->prepare("DELETE FROM Post WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
 
-        // effacer les réponses
-        $query = $this->pdo->prepare("DELETE FROM Comment WHERE postId = :id");
-        $query->bindValue('id', $id);
-        $query->execute();
+
     }
 
     // ajoute un post
