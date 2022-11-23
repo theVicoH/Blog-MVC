@@ -1,5 +1,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <?php
+if($_SESSION['role']==="admin"){
+
 foreach ($User as $user) { ?>
     <div class="text-xl text-indigo-400 p-[20px]">
         <form action="afficher-users" method="POST">
@@ -12,6 +14,9 @@ foreach ($User as $user) { ?>
     </div>
     <div class="w-[800px] border border-indigo-400 ml-4"></div>
 <?php
+    }
+} else {
+    ?><h1>vous n'etes pas admin</h1><?php
 }
 ?>
 <a href="/homepage" class="fixed text-xl text-indigo-400 top-[50px] right-[50px] underline">⬅️retourner à l'acceuil</a>

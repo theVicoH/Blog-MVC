@@ -24,7 +24,7 @@ foreach ($Post as $post) {
         on <?php echo $post->getDatetime(); ?></p>
 
 
-        <!-- commtenter le post -->
+        <!-- commenter le post -->
         <form action="/ajouter-commentaire" method="POST" class='grid grid-cols-10 gap-x-2 px-7'>
 
             <input class='col-span-8 border-2 border-indigo-200 rounded-full py-1 px-5 text-gray-500 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder:text-indigo-200' type="text" name="comment" placeholder="Comment">
@@ -34,11 +34,14 @@ foreach ($Post as $post) {
             <button class="col-span-2 rounded-full text-white bg-indigo-400" type="submit" name="reply-btn">Reply</button>
         </form>
 
-        <!-- form pour effacer un post -->
-        <form action="homepage" method="POST">
-            <input type="hidden" name="postId" value="<?php echo $post->getId()?>">
-            <button type="submit" name="submit_delete_post" class="text-s text-white bg-indigo-400 py-2 px-4 rounded-full ml-2">delete this post ❌</button>
-        </form>
+        <!-- effacer un post -->
+        <?php if($_SESSION['id']===$post->getUserId() || $_SESSION['role']==="admin"){?>
+            <form action="homepage" method="POST">
+                <input type="hidden" name="postId" value="<?php echo $post->getId()?>">
+                <button type="submit" name="submit_delete_post" class="text-s text-white bg-indigo-400 py-2 px-4 rounded-full ml-2">delete this post ❌</button>
+            </form>
+        <?php } ?>
+
 
 
 
@@ -83,7 +86,7 @@ foreach ($Post as $post) {
                     </div>
     
                     <!-- boutons edit et delete -->
-                    <?php if($_SESSION['id']===$comment->getUserId()){?>
+                    <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
                         <div class="flex ml-7">
                             <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
                                 <button>edit</button>
@@ -117,7 +120,7 @@ foreach ($Post as $post) {
                                 <p class="text-sm text-gray-500 max-w-[476px]"><?php echo $respond->getContent();?></p>
                             </div>
         
-                            <?php if($_SESSION['id']===$respond->getUserId()){?>
+                            <?php if($_SESSION['id']===$respond->getUserId() || $_SESSION['role']==="admin"){?>
                                 <div class="flex ml-7">
                                     <form action="homepage" method="POST" class="ml-14 text-indigo-400 font-semibold py-1 text-sm">
                                         <button>edit</button>
@@ -141,4 +144,6 @@ foreach ($Post as $post) {
 ?>
 <a href="/ajouter-post" class="fixed text-4xl text-indigo-400 top-[50px] right-[50px]">+</a>
 
+<?php if($_SESSION['role']==="admin"){?>
 <a href="/afficher-users" class="fixed text-2xl text-indigo-400 top-[50px] left-[50px]">Voir les utilisateurs</a>
+<?php } ?>
