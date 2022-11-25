@@ -42,16 +42,6 @@ foreach ($Post as $post) {
             </form>
         <?php } ?>
 
-
-
-
-
-
-
-
-
-
-
         <!-- PARTIE COMMENTAIRE -->
         <!-- commentaires du post -->
 
