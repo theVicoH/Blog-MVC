@@ -77,4 +77,12 @@ class UserManager extends BaseManager
         $query->bindValue('email', $user->getEmail());
         return (bool)$query->execute();
     }
+
+    public function updateRoleById(int $id, string $role) :bool
+    {
+        $query = $this->pdo->prepare("UPDATE User SET role =:role WHERE id=:id");
+        $query->bindValue('role', $role);
+        $query->bindValue('id', $id);
+        return (bool)$query->execute();
+    }
 }

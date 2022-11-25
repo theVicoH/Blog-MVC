@@ -12,6 +12,7 @@ class UserController extends AbstractController
     {   
         session_start();
         $this->deleteUser();
+        $this->changeRole();
         $method = new UserManager(new PDOFactory());
         $User = $method->getAllUser();
         include dirname(__DIR__, 1) . '/views/afficher-users.php';
@@ -101,4 +102,13 @@ class UserController extends AbstractController
         }
     }
 
+    public function changeRole()
+    {
+        if(isset($_POST['changerole-input']) && isset($_POST['changerole-btn'])) {
+            $id = (int)$_POST['userId'];
+            $role = (string)$_POST['changerole-input'];
+            $manager = new UserManager(new PDOFactory());
+            $manager->updateRoleById($id, $role);
+        }
+    }
 }
