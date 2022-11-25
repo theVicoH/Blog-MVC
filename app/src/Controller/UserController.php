@@ -97,6 +97,9 @@ class UserController extends AbstractController
     {
         if(isset($_POST['submit_delete_user']) && isset($_POST['userId']) ) {
             $id = (int)$_POST['userId'];
+            if($id === $_SESSION['id']){
+                return;
+            }
             $manager = new UserManager(new PDOFactory());
             $manager->deleteUser($id);
         }
