@@ -23,16 +23,6 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->homepage();
         break;
 
-    case "/homepage-admin":
-        $method = new \App\Controller\PostController();
-        $method->homepageAdmin();
-        break;
-
-    case "/ajouter-commentaire":
-        $method = new \App\Controller\CommentController();
-        $method->ajouterCommentaire();
-        break;
-
     case "/ajouter-post":
         $method = new \App\Controller\PostController();
         $method->ajouterPost();

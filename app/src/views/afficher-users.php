@@ -1,4 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
+
 <?php
 if($_SESSION['role']==="admin"){
 

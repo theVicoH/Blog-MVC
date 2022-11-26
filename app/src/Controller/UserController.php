@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Manager\UserManager;
+
 use App\Factory\PDOFactory;
+use App\Manager\UserManager;
 use App\Entity\User;
 
 class UserController extends AbstractController
@@ -15,7 +16,7 @@ class UserController extends AbstractController
         $this->changeRole();
         $method = new UserManager(new PDOFactory());
         $User = $method->getAllUser();
-        include dirname(__DIR__, 1) . '/views/afficher-users.php';
+        $this->render("afficher-users.php", ["User" => $User], 'afficher users');
     }
 
 
@@ -53,7 +54,7 @@ class UserController extends AbstractController
             exit;
         }
 
-        include dirname(__DIR__, 1) . '/views/register.php';
+        $this->render("register.php", [], 'register');
     }
 
 
@@ -88,9 +89,8 @@ class UserController extends AbstractController
 
             exit;
         }
+        $this->render("login.php", [], 'login');
 
-
-        include dirname(__DIR__, 1) . '/views/login.php';
     }
 
     public function deleteUser()

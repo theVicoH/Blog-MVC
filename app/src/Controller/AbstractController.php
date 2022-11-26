@@ -7,26 +7,21 @@ use App\Factory\PDOFactory;
 
 abstract class AbstractController
 {
-    public function render(string $view, array $args = [], array $com = [])
+    public function render(string $view, array $args = [], string $name = "Document")
     {   
-        $title = "Document";
         $view = dirname(__DIR__, 2) . '/src/views/' . $view;
         $base = dirname(__DIR__, 2) . '/src/views/base.php';
 
         $userManager = new UserManager(new PDOFactory());
    
-
         ob_start();
         foreach ($args as $key => $value) {
-            $$key = $value;
-        }
-        foreach ($com as $key => $value) {
             $$key = $value;
         }
 
         require_once $view;
         $_pageContent = ob_get_clean();
-        $_pageTitle = $title;
+        $_pageTitle = $name;
 
         require_once $base;
     }
