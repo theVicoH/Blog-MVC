@@ -15,7 +15,7 @@ class PostController extends AbstractController {
         session_start();
         $id = $_SESSION['id'];
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
-            include dirname(__DIR__, 1) . '/views/ajt-post.php';
+            $this->render("ajt_post.php", [], 'ajout de posts');
             exit;
         }
 
@@ -50,13 +50,9 @@ class PostController extends AbstractController {
         $commentManager->deleteComment();
         $Comment = $commentManager->showComment();
         $this->deconnexion();
-        $this->render("homepage.php", ["Post" => $Post], ["Comment" => $Comment]);
+        $this->render("homepage.php", ["Post" => $Post, "Comment" => $Comment], 'homepage');
     }
 
-    public function homepageAdmin()
-    {
-        include dirname(__DIR__, 1) . '/views/homepage-admin.php';
-    }
 
     public function deletePost()
     {
