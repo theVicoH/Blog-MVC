@@ -48,6 +48,28 @@ Ce projet consiste à créer un blog grâce à la méthode MVC (motif d'architec
 - Mot de passe : **password**
 - Base de donnée : **data**
 
+## 5- Fonctionnalités :
+
+### En tant qu'utilisateur vous pourrez :
+- vous créer un compte.
+- vous connecter au blog.
+- contempler le fil d'actualité avec tous les posts sur le blog.
+- ajouter un post.
+- modififer vos posts.
+- supprimer vos posts.
+- commenter un post.
+- répondre à un commentaire.
+
+### En tant qu'administrateur vous pourrez :
+- vous créer un compte.
+- vous connecter au blog.
+- contempler le fil d'actualité avec tous les posts sur le blog.
+- ajouter un post.
+- modifier n'importe quel post.
+- supprimer n'importe quel post.
+- commenter un post.
+- répondre à un commentaire.
+- avoir un onglet 'voir les utilisateurs'. Dans cet onglet vous pourrez supprimé un utilisateur ou modifier son rôle pour le faire devenir admin ou le faire devenir utilisateur
 __________________________________________________
 
 # Projet réalisé par :
@@ -55,5 +77,3 @@ __________________________________________________
 - ### LACES Vitomir
 - ### MESSAOUI Dounia
 - ### OUALLET Sandie
-
-
