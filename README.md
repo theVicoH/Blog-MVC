@@ -30,7 +30,7 @@ Ce projet consiste à créer un blog grâce à la méthode MVC (motif d'architec
 ### Pour docker :
 - **docker compose up** : Créer le container docker
 - **docker compose down** : Supprime le container docker
-- **"cp app"** puis **"composer dump-autoload"** : installer l'autoload
+- **"cd app"** puis **"composer dump-autoload"** : installer l'autoload
 
 ### Pour GitHub :
 - **git status** : voir où l'on se trouve (sur main / sur une branche) et les modifications
