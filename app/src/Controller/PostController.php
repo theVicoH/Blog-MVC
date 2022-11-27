@@ -15,7 +15,7 @@ class PostController extends AbstractController {
         session_start();
         $id = $_SESSION['id'];
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
-            $this->render("ajt_post.php", [], 'ajout de posts');
+            $this->render("ajt-post.php", [], 'ajout de posts');
             exit;
         }
 
@@ -41,7 +41,11 @@ class PostController extends AbstractController {
     public function homepage()
     {   
         session_start();
-        $this->deletePost();
+        if(isset($_POST['submit_delete_post']) && isset($_POST['postId']) ) {
+            $id = (int)$_POST['postId'];
+            $manager = new PostManager(new PDOFactory());
+            $manager->deletePost($id);
+        }
         $this->redirection();
         $postManager = new PostManager(new PDOFactory());
         $Post = $postManager->getAllPost();
@@ -54,12 +58,36 @@ class PostController extends AbstractController {
     }
 
 
-    public function deletePost()
-    {
-        if(isset($_POST['submit_delete_post']) && isset($_POST['postId']) ) {
-            $id = (int)$_POST['postId'];
+
+
+    public function editPost(){
+        session_start();
+        
+        
+        $commentManager = new CommentController();
+        
+
+        if(isset($_POST['editPost']) && isset($_POST['editPostId']) && isset($_POST['editTitle']) && isset($_POST['editContent']) ) {
+            $id = (int)$_POST['editId'];
+            $title = $_POST['editTitle'];
+            $content = $_POST['editContent'];
+            $newPost = (new Post())
+                ->setId($id)
+                ->setTitle($title)
+                ->setContent($content);
             $manager = new PostManager(new PDOFactory());
-            $manager->deletePost($id);
+            $manager->editPost($newPost);
+            header('Location: /homepage');
+
         }
+
+        $commentManager->editComment();
+
+
+        $postManager = new PostManager(new PDOFactory());
+        $Post = $postManager->getAllPost();
+
+        $Comment = $commentManager->showComment();
+        $this->render("edit.php", ["Post" => $Post, "Comment" => $Comment], 'edit');
     }
 }

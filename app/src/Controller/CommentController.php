@@ -59,5 +59,29 @@ class CommentController extends AbstractController
         }
     }
 
+    public function editComment(){
+        if(isset($_POST['editCommentId']) && isset($_POST['editComment']) && isset($_POST['editCommentContent'])) {
+            $id = (int)$_POST['editCommentId'];
+            $content = $_POST['editCommentContent'];
+            $newPost = (new Comment())
+                ->setId($id)
+                ->setContent($content);
+            $manager = new CommentManager(new PDOFactory());
+            $manager->editComment($newPost);
+            header('Location: /homepage');
+
+        } else if(isset($_POST['editRespondId']) && isset($_POST['editRespond']) && isset($_POST['editRespondContent'])) {
+            $id = (int)$_POST['editRespondId'];
+            $content = $_POST['editRespondContent'];
+            $newPost = (new Comment())
+                ->setId($id)
+                ->setContent($content);
+            $manager = new CommentManager(new PDOFactory());
+            $manager->editComment($newPost);
+            header('Location: /homepage');
+
+        }
+    }
+
 
 }

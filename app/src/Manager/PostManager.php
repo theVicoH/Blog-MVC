@@ -41,23 +41,14 @@ class PostManager extends BaseManager
         
     }
 
-
-    // récupére tous les posts d'un user
-
-    // public function getPostByUser(int $user_id): array
-    // {
-    //     $query = $this->pdo->query("SELECT * FROM Posts WHERE user_id = :user_id");
-    //     $query->bindValue('user_id', $posts->getUserId());
-    //     $query -> execute();
-
-    //     $posts = [];
-
-    //     while($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-    //         $posts[] = new Posts($data);
-    //     }
-
-    //     return $posts;
-    // }
+    public function editPost(Post $post): void
+    {
+        $query = $this->pdo->prepare("UPDATE Post SET title = :title, content = :content WHERE id = :id");
+        $query->bindValue('id', $post->getId());
+        $query->bindValue('title', $post->getTitle());
+        $query->bindValue('content', $post->getContent());
+        $query->execute();
+    }
 
 
     // supprime le post avec son id
@@ -82,7 +73,7 @@ class PostManager extends BaseManager
     }
 
     // ajoute un post
-    public function InsertPost(Post $post): void
+    public function insertPost(Post $post): void
     {
         $query = $this->pdo->prepare("INSERT INTO Post (title, content, image, userId, datetime) VALUES (:title, :content, :image, :user_id, STR_TO_DATE(:datetime, '%d/%m/%Y %H:%i:%s'))");
         $query->bindValue('title', $post->getTitle());
