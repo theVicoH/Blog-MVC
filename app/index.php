@@ -27,15 +27,22 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method = new \App\Controller\PostController();
         $method->ajouterPost();
         break;
+    case "/ajouter-commentaire":
+        $method = new \App\Controller\CommentController();
+        $method->ajouterCommentaire();
+        break;
 
     case "/afficher-users":
         $method = new \App\Controller\UserController();
         $method->afficherUser();
         break;
+
+    case "/edit":
+        $method = new \App\Controller\PostController();
+        $method->editPost();
+        break;
     
-        // case "/change-role":
-        // $method = new App\Controller\UserController();
-        // $method->changeRole();
+
 
     default:
         echo 'ça existe po cette page chef ...';
