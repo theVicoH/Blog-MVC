@@ -50,7 +50,7 @@ class PostController extends AbstractController {
         $commentManager->deleteComment();
         $Comment = $commentManager->showComment();
         $this->deconnexion();
-        $this->render("homepage.php", ["Post" => $Post], ["Comment" => $Comment]);
+        $this->render("homepage.php", ["Post" => $Post, "Comment" => $Comment], 'Homepage');
     }
 
     public function homepageAdmin()

@@ -18,14 +18,18 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->register();
         break;
 
+    case "/afficher-users":
+        $method = new \App\Controller\UserController();
+        $method->afficherUser();
+        break;
+
     case "/homepage":
         $method = new \App\Controller\PostController();
         $method->homepage();
         break;
-
-    case "/homepage-admin":
+    case "/ajouter-post":
         $method = new \App\Controller\PostController();
-        $method->homepageAdmin();
+        $method->ajouterPost();
         break;
 
     case "/ajouter-commentaire":
@@ -33,20 +37,15 @@ switch ($_SERVER["REQUEST_URI"]) {
         $method->ajouterCommentaire();
         break;
 
-    case "/ajouter-post":
-        $method = new \App\Controller\PostController();
-        $method->ajouterPost();
+    case "/edit-comment":
+        $method = new \App\Controller\CommentController();
+        $method->editComment();
         break;
 
-    case "/afficher-users":
-        $method = new \App\Controller\UserController();
-        $method->afficherUser();
-        break;
+
+
     
-        // case "/change-role":
-        // $method = new App\Controller\UserController();
-        // $method->changeRole();
 
     default:
-        echo 'ça existe po cette page chef ...';
+        echo "Cette page n'existe pas";
 }

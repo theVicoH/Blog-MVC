@@ -76,19 +76,29 @@ foreach ($Post as $post) {
                     </div>
     
                     <!-- boutons edit et delete -->
-                    <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                    
                         <div class="flex ml-7">
-                            <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
-                                <button>edit</button>
-                            </form>
-                            <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
-                                <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
-                                <button type="submit" name="submit_delete">delete</button>
-                            </form>
+                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                    <button type="submit" name="submit_delete">delete</button>
+                                </form>
+                            <?php } 
+                            if($_SESSION['id']===$comment->getUserId()){
+                            ?>
+
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                    <button type="submit" name="submit_delete_post"><a href="edit-comment">edit</a></button>
+                                </form> 
+                            <?php } ?>
                         </div>
-                    <?php } ?>
+                    
                     
                 </div>
+
+
+
                 <!-- PARTIE REPONSE -->
                 <!-- on récup l'id du com de base et celui du com réponse -->
                 
@@ -110,17 +120,25 @@ foreach ($Post as $post) {
                                 <p class="text-sm text-gray-500 max-w-[476px]"><?php echo $respond->getContent();?></p>
                             </div>
         
-                            <?php if($_SESSION['id']===$respond->getUserId() || $_SESSION['role']==="admin"){?>
-                                <div class="flex ml-7">
-                                    <form action="homepage" method="POST" class="ml-14 text-indigo-400 font-semibold py-1 text-sm">
-                                        <button>edit</button>
-                                    </form>
-                                    <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
-                                        <input type="hidden" name="comId" value="<?php echo $respond->getId()?>">
-                                        <button type="submit" name="submit_delete">delete</button>
-                                    </form>
-                                </div>
+                            <div class="flex ml-7">
+                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                    <button type="submit" name="submit_delete">delete</button>
+                                </form>
+                            <?php } 
+                            if($_SESSION['id']===$comment->getUserId()){
+                            ?>
+
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                    <button type="submit" name="submit_delete_post"><a href="edit-comment">edit</a></button>
+                                </form> 
                             <?php } ?>
+                            </div>
+
+
+                            
                         </div>
                     </div>
                     <?php } ?>

@@ -60,4 +60,23 @@ class CommentController extends AbstractController
     }
 
 
+    public function editComment()
+    {
+        session_start();
+        $commentManager = new CommentController();
+
+        if(isset($_POST['submit_edit']) && isset($_POST['comId']) ) {
+            $id = (int)$_POST['comId'];
+            $manager = new CommentManager(new PDOFactory());
+            $manager->editComment($id);
+        }
+        
+        $Comment = $commentManager->showComment();
+
+
+        $this->render("edit-comment.php", [], 'edit-comment');
+
+    }
+
+
 }

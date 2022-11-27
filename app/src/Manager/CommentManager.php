@@ -57,4 +57,13 @@ class CommentManager extends BaseManager
         $query->bindValue('datetime', $comment->getDatetime()->format('d/m/Y H:i:s'));
         $query->execute();
     }
+
+
+    public function editComment(int $id)
+    {
+        $query = $this->pdo->prepare("UPDATE Comment SET content = :content WHERE id = :id");
+        $query->bindValue('content', $comment->getContent());
+        $query->bindValue('id', $comment->getId());
+        $query->execute();
+    }
 }
