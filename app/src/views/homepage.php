@@ -80,8 +80,18 @@
                                 <input type="hidden" name="comId" value="<?php echo $comment->getId() ?>">
                                 <button type="submit" class="col-span-2 text-indigo-400 font-semibold py-1 text-sm">Répondre</button>
                             </form> 
-                            
+
                         </div>
+
+                        <div class="flex ml-7">
+                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $comment->getId()?>">
+                                    <button type="submit" name="submit_delete">delete</button>
+                                </form>
+                            <?php } ?>
+                        </div>
+
         
                         
                     </div>
@@ -108,10 +118,20 @@
         
                             </div>
                         </div>
-                        <?php } ?>
-                    <?php } ?>
-                <?php } ?>
-            <?php } ?>
+
+                        <div class="flex ml-7">
+                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                                <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
+                                    <input type="hidden" name="comId" value="<?php echo $respond->getId()?>">
+                                    <button type="submit" name="submit_delete">delete</button>
+                                </form>
+                            <?php } ?>
+                        </div>
+
+                        <?php }
+                        } 
+                    }
+                } ?>
         </div>
         
     <?php
