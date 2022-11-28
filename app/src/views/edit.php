@@ -9,12 +9,13 @@
         <form action="edit" method="post" class="w-full sm:w-[616px] grid gap-y-6 rounded-md bg-white pb-7">
             <input type="hidden" name="editPostId" value="<?php echo $post->getId(); ?>">
 
-            <?php if($_SESSION['id']===$post->getUserId() || $_SESSION['role']==="admin"){?>
+            <!--  Titre du post -->
+            <?php if($_SESSION['id']===$post->getUserId() ){?>
                 <input name="editTitle" class="mt-7 mx-7 text-2xl text-indigo-400 font-semibold border-2 border-red-400 rounded" value="<?php echo $post->getTitle(); ?>">
-            <?php } else { ?>
+            <?php } 
+            else { ?>
                 <h2 class="pt-7 px-7 text-2xl text-indigo-400 font-semibold"><?php echo $post->getTitle(); ?></h2>
             <?php } ?>
-            <!--  Titre du post -->
 
             <!-- image du post -->
             <?php
@@ -25,7 +26,7 @@
             ?>
 
             <!-- contenu du post -->
-            <?php if($_SESSION['id']===$post->getUserId() || $_SESSION['role']==="admin"){?>
+            <?php if($_SESSION['id']===$post->getUserId()){?>
                 <textarea name="editContent" class="mx-7 text-gray-500 border-2 border-red-400 rounded"><?php echo $post->getContent(); ?></textarea>
             <?php } else { ?>
                 <p class="px-7 text-gray-500"><?php echo $post->getContent(); ?></p>
@@ -34,7 +35,7 @@
             <p class="px-7 text-sm text-gray-400">by 
             <span class="font-bold"><?php echo $userPost["username"]; ?></span> 
             on <?php echo $post->getDatetime(); ?></p>
-            <?php if($_SESSION['id']===$post->getUserId() || $_SESSION['role']==="admin"){?>
+            <?php if($_SESSION['id']===$post->getUserId()){?>
                 <div class="ml-7">
                     <button type="submit" name="editPost" class="px-4 py-1 rounded-full text-white bg-red-400">Edit</button>
                 </div>
@@ -61,13 +62,13 @@
                             </div>
                             <input type="hidden" name="editCommentId" value="<?php echo $comment->getId(); ?>">
                             <!-- Contenu du commentaire -->
-                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                            <?php if($_SESSION['id']===$comment->getUserId()){?>
                                 <input name="editCommentContent" class="bg-slate-100 text-sm text-gray-500 font-semibold border-2 border-red-400 rounded" value="<?php echo $comment->getContent(); ?>">
                             <?php } else { ?>
                                 <p class='text-sm text-gray-500 max-w-[504px]' style="word-wrap: break-word;"><?php echo $comment->getContent();?></p>
                             <?php } ?>
 
-                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                            <?php if($_SESSION['id']===$comment->getUserId()){?>
                                 <div>
                                     <button type="submit" name="editComment" class="px-4 py-1 text-sm rounded-full text-white bg-red-400">Edit</button>
                                 </div>
@@ -96,12 +97,12 @@
                                     </div>   
                                     <!-- contenu -->
                                     <input type="hidden" name="editRespondId" value="<?php echo $respond->getId(); ?>">
-                                    <?php if($_SESSION['id']===$respond->getUserId() || $_SESSION['role']==="admin"){?>
+                                    <?php if($_SESSION['id']===$respond->getUserId()){?>
                                         <input name="editRespondContent" class="bg-slate-100 text-sm text-gray-500 font-semibold border-2 border-red-400 rounded" value="<?php echo $respond->getContent(); ?>">
                                     <?php } else { ?>
                                         <p class="text-sm text-gray-500 max-w-[476px]"><?php echo $respond->getContent();?></p>
                                     <?php } ?>
-                                    <?php if($_SESSION['id']===$respond->getUserId() || $_SESSION['role']==="admin"){?>
+                                    <?php if($_SESSION['id']===$respond->getUserId()){?>
                                         <div>
                                             <button type="submit" name="editRespond" class="px-4 py-1 text-sm rounded-full text-white bg-red-400">Edit</button>
                                         </div>
@@ -111,10 +112,11 @@
 
                             </div>
                         </div>
-                        <?php } ?>
-                    <?php } ?>
-                <?php } ?>
-            <?php } ?>
+                        <?php }
+                    }
+                }
+            } ?>
+            
         </form>
         
     <?php
