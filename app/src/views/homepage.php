@@ -120,7 +120,7 @@
                         </div>
 
                         <div class="flex ml-7">
-                            <?php if($_SESSION['id']===$comment->getUserId() || $_SESSION['role']==="admin"){?>
+                            <?php if($_SESSION['id']===$respond->getUserId() || $_SESSION['role']==="admin"){?>
                                 <form action="homepage" method="POST" class="ml-7 text-indigo-400 font-semibold py-1 text-sm">
                                     <input type="hidden" name="comId" value="<?php echo $respond->getId()?>">
                                     <button type="submit" name="submit_delete">delete</button>
