@@ -68,7 +68,7 @@ class PostController extends AbstractController {
         
 
         if(isset($_POST['editPost']) && isset($_POST['editPostId']) && isset($_POST['editTitle']) && isset($_POST['editContent']) ) {
-            $id = (int)$_POST['editId'];
+            $id = (int)$_POST['editPostId'];
             $title = $_POST['editTitle'];
             $content = $_POST['editContent'];
             $newPost = (new Post())
