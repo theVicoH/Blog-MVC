@@ -45,5 +45,5 @@ switch ($_SERVER["REQUEST_URI"]) {
 
 
     default:
-        echo 'ça existe po cette page chef ...';
+        echo "Cette page n'existe pas ...";
 }
